@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address SYSTEM "index.dtd">
+<cursos>
+	<curso>
+		<id>17-473738</id>
+		<anoaca>2017/18</anoaca>
+		<author>Ana</author>
+		<title>Salud Laboral</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>./17-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>./17-473738 Alumnos.csv</studentsfile>
+		<gradesfile>./17-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2017-09-07</fecini>
+		<fecfin>2018-01-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>Enero</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Junio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>Nota 80% examen</name>
+				<passgrade>4</passgrade>
+			</grade>
+			<grade>
+				<name>Seminarios</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>CV</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial></parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion></autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea></tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>18-473738</id>
+		<anoaca>2018/19</anoaca>
+		<author>Ana</author>
+		<title>Salud Laboral</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>./18-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>./18-473738 Alumnos.csv</studentsfile>
+		<gradesfile>./18-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile>./18-473738 Recursos.csv</resourcesfile>
+		<fecini>2018-09-03</fecini>
+		<fecfin>2019-01-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>Enero</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Junio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>peso del examen 80</name>
+				<passgrade>4</passgrade>
+			</grade>
+			<grade>
+				<name>CV TRABAJOS</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>SEMINARIOS</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2018-10-09</parcial>
+			<parcial>2018-12-20</parcial>
+			<parcial>2019-01-14</parcial>
+			<parcial>2019-01-31</parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion>2018-09-11</autoevaluacion>
+			<autoevaluacion>2018-09-18</autoevaluacion>
+			<autoevaluacion>2018-09-25</autoevaluacion>
+			<autoevaluacion>2018-10-02</autoevaluacion>
+			<autoevaluacion>2018-10-16</autoevaluacion>
+			<autoevaluacion>2018-10-23</autoevaluacion>
+			<autoevaluacion>2018-10-30</autoevaluacion>
+			<autoevaluacion>2018-11-06</autoevaluacion>
+			<autoevaluacion>2018-11-18</autoevaluacion>
+			<autoevaluacion>2018-11-20</autoevaluacion>
+			<autoevaluacion>2018-11-27</autoevaluacion>
+			<autoevaluacion>2018-12-04</autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2018-10-31</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>19-473738</id>
+		<anoaca>2019/20</anoaca>
+		<author>Ana Álvarez</author>
+		<title>Salud Laboral</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url>https://cv4.ucm.es/moodle/course/view.php?id=123053</url>
+		<logfile>./19-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>./19-473738 Alumnos.csv</studentsfile>
+		<gradesfile>./19-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2019-09-07</fecini>
+		<fecfin>2019-12-20</fecfin>
+		<grades>
+			<main_grade>
+				<name>ACTA</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>test acertadas 0-40</name>
+				<passgrade>24</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial></parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion></autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2019-12-20</tarea>
+			<tarea>2019-10-30</tarea>
+			<tarea>2019-12-17</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-40</ingrade>
+				<cod_split>Entre 0 y 23.99</cod_split>
+				<min_split>0</min_split>
+				<max_split>23.99</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-40</ingrade>
+				<cod_split>Entre 24 y 31.99</cod_split>
+				<min_split>24</min_split>
+				<max_split>32</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-40</ingrade>
+				<cod_split>Entre 32 y 35.99</cod_split>
+				<min_split>32</min_split>
+				<max_split>36</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-40</ingrade>
+				<cod_split>Más de 36</cod_split>
+				<min_split>36</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+</cursos>
+
