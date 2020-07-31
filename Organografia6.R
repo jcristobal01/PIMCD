@@ -149,13 +149,13 @@
       df_ingrades <- rbind(df_ingrades,df_ingrade,stringAsFactor=FALSE)
     }
     df_ingrades <- df_ingrades[df_ingrades$Curso != 0,]
-    if (file.exists("./AccDiaCV.csv")) {
-      accDia_CV <- read.csv("./AccDiaCV.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
+    if (file.exists("./Data/AccDiaCV.csv")) {
+      accDia_CV <- read.csv("./Data/AccDiaCV.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
       colnames(accDia_CV) <- c("Fecha","VisitasCV")
       accDia_CV$Fecha <- as.Date(as.character(accDia_CV$Fecha),format="%Y%m%d")
     }
-    if (file.exists("./AccHoraCV.csv")) {
-      accHora_CV <- read.csv("./AccHoraCV.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
+    if (file.exists("./Data/AccHoraCV.csv")) {
+      accHora_CV <- read.csv("./Data/AccHoraCV.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
       colnames(accHora_CV) <- c("Hora","Visitas")
     }
     free(data)
