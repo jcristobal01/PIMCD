@@ -71,7 +71,7 @@
     ###  ##   E T L   ##  #
     ###   ##         ##   #
     ###     #########     #
-    setwd("~/R/PIMCD/Datos")
+    # setwd("~/R/PIMCD/Datos")
     #setwd("/R/Organografía/Datos")
     #dir <- readline("Indique directorio directorio de trabajo: ")
     #setwd(dir);
