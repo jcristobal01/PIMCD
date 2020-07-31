@@ -1,0 +1,83 @@
+"","Modulo","Accion","18-107910","19-107910"
+"1","Usuario","Informe de notas de usuario visto",190,306
+"2","Sistema","Curso visto",4532,9280
+"3","Sistema","Informe usuario del curso visto",16,0
+"4","Sistema","Usuario calificado",794,1695
+"5","Sistema","Perfil de usuario visto",431,971
+"6","Sistema","Lista de usuarios vista",235,583
+"7","Sistema","Sumarios de cursos vistos",4,14
+"8","Sistema","Módulo de curso actualizado",176,156
+"9","Sistema","Evento de calendario actualizado",104,98
+"10","Sistema","Evento de calendario creado",9,8
+"11","Sistema","Módulo de curso creado",21,35
+"12","Sistema","Sección de curso actualizado",3,7
+"13","Sistema","Sección del curso creada",1,0
+"14","Sistema","Lista de insignias vista",7,5
+"15","Sistema","Calificación borrada",51,0
+"16","Sistema","Actividad reciente vista",13,22
+"17","Sistema","Curso actualizado",1,0
+"18","Sistema","Copia de curso creada",1,0
+"19","Informe general","Informe de resumen de notas visto",12,11
+"20","URL","Módulo de curso visto",150,353
+"21","Foro","Módulo de curso visto",638,1352
+"22","Foro","Tema visto",724,1621
+"23","Foro","Tema creado",18,34
+"24","Foro","Algún contenido ha sido publicado.",168,428
+"25","Foro","Mensaje creado",137,379
+"26","Foro","Se ha suscrito a esta discusión",126,296
+"27","Foro","Mensaje actualizado",13,15
+"28","Foro","Tema borrado",1,1
+"29","Foro","Mensaje borrado",1,4
+"30","Foro","Informe del usuario visualizado",11,6
+"31","Foro","Se ha borrado la suscripción de esta discusión",8,39
+"32","Foro","Curso buscado",1,0
+"33","Informe del calificador","Informe del calificador visto",45,39
+"34","Recurso","Módulo de curso visto",44,243
+"35","Carpeta","Módulo de curso visto",786,1415
+"36","Carpeta","Directorio descargado en formato Zip",18,60
+"37","Carpeta","Carpeta actualizada",43,30
+"38","Tarea","Se ha visualizado el estado de la entrega.",2424,5268
+"39","Tarea","Formulario de calificaciones visto",478,1090
+"40","Tarea","Se ha calificado el envío.",220,484
+"41","Tarea","Visualización de las Calificaciones",540,1018
+"42","Tarea","Retroalimentación vista",10,3
+"43","Tarea","Se ha enviado una entrega",263,521
+"44","Tarea","Formulario de entrega visto.",434,831
+"45","Tarea","El usuario ha duplicado su envío.",14,0
+"46","Tarea","Se ha entregado una extensión.",15,54
+"47","Tarea","Envío visto.",1,4
+"48","Wiki","Módulo de curso visto",89,176
+"49","Wiki","Mapa de la página wiki visto",2,2
+"50","Wiki","Historia de la wiki vista",5,4
+"51","Wiki","Comentarios vistos",4,5
+"52","Wiki","Página wiki vista",38,70
+"53","Wiki","Bloqueos de la página wiki borrados",30,49
+"54","Wiki","Página de la wiki actualizada",30,48
+"55","Wiki","Versión de la página wiki vista",3,0
+"56","Cuestionario","Módulo de curso visto",56,29
+"57","Cuestionario","Informe de cuestionario visto",3,0
+"58","Cuestionario","Intento del cuestionario revisado",24,11
+"59","Cuestionario","Intento enviado",23,10
+"60","Cuestionario","Resumen del intento de cuestionario visualizado",32,12
+"61","Cuestionario","Intento de cuestionario visualizado",297,140
+"62","Cuestionario","Ha comenzado el intento",24,10
+"63","Cuestionario","Vista previa del intento iniciada",1,1
+"64","Cuestionario","Página de edición del cuestionario visitada",9,5
+"65","Consulta","Módulo de curso visto",358,944
+"66","Consulta","Consulta respondida",140,361
+"67","Consulta","Informe de Consulta visto",16,13
+"68","Comentarios de la entrega","Comentario creado",34,13
+"69","Comentarios de la entrega","Comentario eliminado",1,2
+"70","Archivos enviados","Entrega creada.",176,428
+"71","Archivos enviados","Un fichero ha sido subido.",211,461
+"72","Archivos enviados","Envío actualizado.",35,33
+"73","Hoja de cálculo Excel","Calificación XLS exportada",1,0
+"74","Entregas de texto en línea","Entrega creada.",30,71
+"75","Entregas de texto en línea","Un texto en línea ha sido subido.",38,71
+"76","Entregas de texto en línea","Envío actualizado.",8,0
+"77","Sistema","Instancia del módulo del curso visualizada",190,1
+"78","Tarea","Instancia del módulo del curso visualizada",190,1
+"79","Foro","Suscripción activada",190,1
+"80","Foro","Instancia del módulo del curso visualizada",190,4
+"81","Hoja de cálculo OpenOffice","Calificación OpenDocument exportada",190,1
+"82","Registros","Informe de registros de usuario visto",190,1
