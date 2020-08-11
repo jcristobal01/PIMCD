@@ -1,5 +1,7 @@
-library(googleAnalyticsR)
-library(ggplot2)
+library(googleAnalyticsR)   # Conexisón con Google Analytics
+library(ggplot2)            # Libreria de Gráficos
+library(scales)             # Libreria para cambiar escaas en los gráficos
+library(dplyr)              
 #ga_auth()
 #my_accounts <- ga_account_list()
 
@@ -7,8 +9,73 @@ library(ggplot2)
 my_id <- "115311684"
 id.cv <- "19-107910"
 id.moodle <- "118059"
-start_date <- "2019-09-09"
-end_date <- "2019-12-20"
+start_date <- "2019-09-06"
+end_date <- "2019-09-15"
+## Calculamos las sesiones por día de todos los cursos
+cargar_sesiones = function (fecha_ini,fecha_fin) {
+  fecha_ini <- as.Date(fecha_ini)
+  vecha_fin <- as.Date(fecha_fin)
+  df1 <- dim_filter("pagePath",operator = "REGEXP",expressions = "^/moodle/course/view.php")
+  df2 <- dim_filter("pagePath",operator = "REGEXP",expressions = "[&]",not=T)
+  my_dim_filter_clause <- filter_clause_ga4(list(df1,df2),operator = "AND")
+  df <- google_analytics(viewId = my_id,
+                               date_range = c(fecha_ini, fecha_fin),
+                               metrics = c("sessions"),
+                               dimensions = c("pagePath","date"),
+                               dim_filters = my_dim_filter_clause,
+                               rows_per_call = 100000,
+                               samplingLevel="LARGE",
+                               slow_fetch=T,
+                               anti_sample=T,
+                               anti_sample_batches=1)
+  #                               max=-1)
+  df$curso <- data.frame(do.call('rbind', strsplit(as.character(df$pagePath),'=',fixed=TRUE)))[2]
+  df <- df[df$sessions > 0,]
+  df$pagePath <-NULL
+  colnames(df) <- c("Fecha","Sesiones","Curso")
+  df <- df[df$Curso != "null",]
+  df <- df[df$Curso != "/moodle/course/view.php",]
+  return (df)
+}
+if (file.exists("./Data/GA_Sesiones.Rdata")) { 
+  load("./Data/GA_Sesiones.Rdata",verbose=F)
+  if (start_date < min(ga_total$Fecha)) {
+    df_temp <- cargar_sesiones(start_date,min(ga_total$Fecha)-1)
+    ga_total <- ga_total %>% add_row(df_temp)
+  }
+  if (end_date > max(ga_total$Fecha)) {
+    df_temp <- cargar_sesiones(max(ga_total$Fecha)+1,end_date)
+    ga_total <- ga_total %>% add_row(df_temp)
+  }
+} else { 
+  ga_total <- cargar_sesiones(start_date,end_date)
+}
+accmean <- aggregate(ga_total$Sesiones, by=list(ga_total$Fecha),FUN=mean)
+colnames(accmean) <- c("Fecha", "Sesiones")
+graph <- ggplot(data=accmean, aes(x=Fecha)) +
+  geom_line(aes(y=Sesiones),color="red",linetype="dashed") +
+  geom_line(aes(y=ga_total$Sesiones[ga_total$Curso == id.moodle]),color ="black") +
+  ggtitle("Sesiones durante el curso (por Fechas)") +
+  scale_x_date(breaks = date_breaks("weeks"),labels = date_format("%d/%m/%Y")) +
+  theme(axis.text.x = element_text(angle=45))
+print (graph)
+save(ga_total,file="./Data/GA_Sesiones.Rdata")
+
+
+
+
+
+
+
+# Change the line type
+graph <- ggplot(data=df, aes(x=dose, y=len, group=1))  + 
+  geom_line(linetype = "dashed") +
+  geom_point()
+# Change the color
+ggplot(data=df, aes(x=dose, y=len, group=1)) +
+  geom_line(color="red")+
+  geom_point()
+
 
 df1 <- dim_filter("pagePath",operator = "REGEXP",expressions = "^/moodle/course/view.php")
 df2 <- dim_filter("pagePath",operator = "REGEXP",expressions = "[&]",not=T)
@@ -30,10 +97,10 @@ ga_data <- google_analytics(viewId = my_id,
                             date_range = c(start_date, end_date),
                             metrics = c("uniqueDimensionCombinations",
                                         "users",
-                                        "uniquePageViewas",
+                                        "uniquePageViews",
                                         "sessions",
                                         "bounces"),
-                            dimensions = c("dateHourMinute",
+                            dimensions = c("dateHourMinute","pagePath",
                                            "Country",
                                            "Region",
                                            "City",
@@ -46,13 +113,25 @@ ga_data <- google_analytics(viewId = my_id,
                             samplingLevel="LARGE",
                             slow_fetch=T,
                             anti_sample=T,
-                            anti_sample_batches=10)
+                            anti_sample_batches=1)
 #                            max=-1)
-
 save(ga_data,file=paste("./Data/GA_",id.cv,".Rdata",sep=""))
+ga_data$curso <- data.frame(do.call('rbind', strsplit(as.character(ga_data$pagePath),'=',fixed=TRUE)))[2]
 ga_data$fecha <- strptime(ga_data$dateHourMinute,format="%Y%m%d%H%M")
-ga_data$dia <- as.Date(ga_data$Fecha,format="%Y-%m-%d")
+ga_data$dia <- as.Date(ga_data$fecha,format="%Y-%m-%d")
+accesos <-table(ga_data$pagePath,ga_data$dia)
 accFecha <- aggregate(sessions ~ dia, data=ga_data,sum)
+## He realizado cruces con Google Maps y no cuadran los datos porque GoogleMaps considera sesiones a 
+## cualquier usuario que entre a Moodle aunque no acceda a ningún curso. Y considera la misma sesion aunque
+## acceda a distintos cursos.
+## Nosotros consideramos sesiones a cada usuario que pasa por la página de inicio del curso, pero no podemos
+## distinguir que pertenezca al mismo usuario o a otro.-
+## Google Maps no conserva datyos personales del usuario (id o IP)
+## Ejemplo para el curso 118059 para el día 2020-09-09
+##   Sesiones segun Moodle: 123
+##   Sesiones segun GAnalytics: 91
+##   Sesiones segin GA filtradas: 13
+ga_data <- ga_data[ga_data$sessions > 0,]
 ga_data$pagePath<-NULL
 #ga_data$Users <- NULL
 library(RgoogleMaps)
