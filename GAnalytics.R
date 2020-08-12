@@ -15,6 +15,10 @@ end_date <- "2019-09-15"
 cargar_sesiones = function (fecha_ini,fecha_fin) {
   fecha_ini <- as.Date(fecha_ini)
   vecha_fin <- as.Date(fecha_fin)
+  class(fecha_ini)
+  class(fecha_fin)
+  print(fecha_ini)
+  print(fecha_fin)
   df1 <- dim_filter("pagePath",operator = "REGEXP",expressions = "^/moodle/course/view.php")
   df2 <- dim_filter("pagePath",operator = "REGEXP",expressions = "[&]",not=T)
   my_dim_filter_clause <- filter_clause_ga4(list(df1,df2),operator = "AND")
