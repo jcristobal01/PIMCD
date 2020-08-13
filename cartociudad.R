@@ -11,15 +11,22 @@ centro <- c(so.lat + (ne.lat - so.lat)/2,
 mapa <- cartociudad_get_map(centro, 280)
 ggmap(mapa) 
 
-casa <- cartociudad_geocode("calle Valle del Tiétar, Villanueva de la Cañada, madrid")
+casa <- cartociudad_geocode("calle Valle del Tiétar 19, Villanueva de la Cañada, madrid")
+#casa <- cartociudad_geocode("calle pinar del rio 17, Barcelona")
 #casa <- cartociudad_geocode("calle Sancho Garcia,Sepulveda, Segovia")
 #casa <- cartociudad_geocode("Avenida Senenca 2, madrid")
+geocode <- cartociudad_geocode("calle valle del tiétar 19, Villanueva de la Cañada, Madrid")
+geocode <- cartociudad_geocode("calle Sancho García 17, Sepúlveda, Segovia")
+cartociudad_get_location_info(geocode$lat,geocode$lng,year=2010,info.source=c("census","cadastre","reverse"))
+
 mapa_casa <- cartociudad_get_map(c(casa$lat,casa$lng),
-                                 10,
+                                 0.1,
                                  add.postcode.area = T,
                                  add.cadastral.layer = F,
                                  add.censal.section = F)
 ggmap(mapa_casa)
+cartociudad_get_location_info(41.422278,2.182607,year=2015,info.source = "reverse")
+cartociudad_reverse_geocode(41.422278,2.182607)
 #+ geom_point(aes(x = lon, y = lat), data = localizaciones)
 
 
