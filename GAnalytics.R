@@ -9,6 +9,12 @@ library(dplyr)
 my_id <- "115311684" #backup
 #my_id <- "83251795"
 id.cv <- "19-107910"
+df <- read.csv ("../Data/19-107910 Registros.csv",header=T,sep=";")
+df_log <- df_log[df_log$origen == "web",]
+df_log$idCV <- sapply(strsplit(as.character(df_log$descripcion),split="The user with id '",fixed=T),"[",2)
+df_log$idCV <- sapply(strsplit(as.character(df_log$idCV),split="'",fixed=T),"[",1)
+
+
 id.moodle <- "118059"
 start_date <- "2019-09-09"
 end_date <- "2019-12-20"

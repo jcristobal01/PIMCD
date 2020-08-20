@@ -64,7 +64,7 @@
     CursosCV <- 11100         # Cursos Virtualizados en 2017/18
     GraToFich <- "S"          # Destino de los Gráficos
     GraOpt <- ",width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100"
-    myXML <- "index_Yolanda1920.xml"
+    myXML <- "./Data/index_Yolanda1920.xml"
     lang <- "Esp"
     ###     #########     #
     ###   ##         ##   #
@@ -278,11 +278,11 @@
     
     ### Contabiliza las acciones de cada curso ------------------------------------------------
     Contabiliza_Acciones <- function(df_log,curso) {
-      if (!file.exists("Modulos_Acciones.csv")) {
+      if (!file.exists("./Data/Modulos_Acciones.csv")) {
         df_acciones <- data.frame(-1,0)
         colnames(df_acciones) <- c("Modulo","Accion")
       } else {
-        df_acciones <- read.csv("Modulos_Acciones.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=",",stringsAsFactors=FALSE)
+        df_acciones <- read.csv("./Data/Modulos_Acciones.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=",",stringsAsFactors=FALSE)
         if (colnames(df_acciones)[1]== "") {df_acciones[,1] <- NULL}
       }
     # Comprobamos si ha sido contabilizada esta asignatura
@@ -336,10 +336,12 @@
       #  i = 1
       ### Archivo maestro de Alumnos (GEA)
       df_grade <- df_grades[df_grades$Curso==i,] 
+#      read.csv("../Data/18-473738 Alumnos.csv")
       if (file.exists(as.vector(df_cursos$resourcesfile[i]))) {
         df_recurso     <- read.csv(as.vector(df_cursos$resourcesfile[i]),fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
     #    colnames(df_alum) <- c("Matrícula","Convocatoria","Sexo","Apellidos","Nombre","NIF","Correo","Teléfono")
       } else {df_recurso <- data.frame()}
+#      read.csv(as.vector(df_cursos$studentsfile[2]))
       if (file.exists(as.vector(df_cursos$studentsfile[i]))) {
         df_alum     <- read.csv(as.vector(df_cursos$studentsfile[i]),fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
         if (!"PROCEDENCIA"%in%colnames(df_alum)){
@@ -500,7 +502,7 @@
     #########################################################  
     ## Accesos a MYSQL para conocer accesos por Titulación ##
     #########################################################
-    rDataFile <- paste(myXML,"Rdata",sep=".")
+    rDataFile <- paste("./Data/",myXML,".Rdata",sep="")
     if (file.exists(rDataFile)) {load(rDataFile)
       } else {
       storiesDb <- dbConnect(RMariaDB::MariaDB(), user='us_pimcd', password='us_pimcd_BD_2020!', dbname='CV', host='127.0.0.1')
@@ -1479,7 +1481,7 @@
       
       
       
-      library(caret)   
+        library(caret)   
       library(randomForest) 
       set.seed (2020)
       df_alum <- df_alums[df_alums$Curso == i,]
