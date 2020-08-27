@@ -1,83 +1,97 @@
-"","Modulo","Accion","18-107910","19-107910"
-"1","Usuario","Informe de notas de usuario visto",190,306
-"2","Sistema","Curso visto",4532,9280
-"3","Sistema","Informe usuario del curso visto",16,0
-"4","Sistema","Usuario calificado",794,1695
-"5","Sistema","Perfil de usuario visto",431,971
-"6","Sistema","Lista de usuarios vista",235,583
-"7","Sistema","Sumarios de cursos vistos",4,14
-"8","Sistema","Módulo de curso actualizado",176,156
-"9","Sistema","Evento de calendario actualizado",104,98
-"10","Sistema","Evento de calendario creado",9,8
-"11","Sistema","Módulo de curso creado",21,35
-"12","Sistema","Sección de curso actualizado",3,7
-"13","Sistema","Sección del curso creada",1,0
-"14","Sistema","Lista de insignias vista",7,5
-"15","Sistema","Calificación borrada",51,0
-"16","Sistema","Actividad reciente vista",13,22
-"17","Sistema","Curso actualizado",1,0
-"18","Sistema","Copia de curso creada",1,0
-"19","Informe general","Informe de resumen de notas visto",12,11
-"20","URL","Módulo de curso visto",150,353
-"21","Foro","Módulo de curso visto",638,1352
-"22","Foro","Tema visto",724,1621
-"23","Foro","Tema creado",18,34
-"24","Foro","Algún contenido ha sido publicado.",168,428
-"25","Foro","Mensaje creado",137,379
-"26","Foro","Se ha suscrito a esta discusión",126,296
-"27","Foro","Mensaje actualizado",13,15
-"28","Foro","Tema borrado",1,1
-"29","Foro","Mensaje borrado",1,4
-"30","Foro","Informe del usuario visualizado",11,6
-"31","Foro","Se ha borrado la suscripción de esta discusión",8,39
-"32","Foro","Curso buscado",1,0
-"33","Informe del calificador","Informe del calificador visto",45,39
-"34","Recurso","Módulo de curso visto",44,243
-"35","Carpeta","Módulo de curso visto",786,1415
-"36","Carpeta","Directorio descargado en formato Zip",18,60
-"37","Carpeta","Carpeta actualizada",43,30
-"38","Tarea","Se ha visualizado el estado de la entrega.",2424,5268
-"39","Tarea","Formulario de calificaciones visto",478,1090
-"40","Tarea","Se ha calificado el envío.",220,484
-"41","Tarea","Visualización de las Calificaciones",540,1018
-"42","Tarea","Retroalimentación vista",10,3
-"43","Tarea","Se ha enviado una entrega",263,521
-"44","Tarea","Formulario de entrega visto.",434,831
-"45","Tarea","El usuario ha duplicado su envío.",14,0
-"46","Tarea","Se ha entregado una extensión.",15,54
-"47","Tarea","Envío visto.",1,4
-"48","Wiki","Módulo de curso visto",89,176
-"49","Wiki","Mapa de la página wiki visto",2,2
-"50","Wiki","Historia de la wiki vista",5,4
-"51","Wiki","Comentarios vistos",4,5
-"52","Wiki","Página wiki vista",38,70
-"53","Wiki","Bloqueos de la página wiki borrados",30,49
-"54","Wiki","Página de la wiki actualizada",30,48
-"55","Wiki","Versión de la página wiki vista",3,0
-"56","Cuestionario","Módulo de curso visto",56,29
-"57","Cuestionario","Informe de cuestionario visto",3,0
-"58","Cuestionario","Intento del cuestionario revisado",24,11
-"59","Cuestionario","Intento enviado",23,10
-"60","Cuestionario","Resumen del intento de cuestionario visualizado",32,12
-"61","Cuestionario","Intento de cuestionario visualizado",297,140
-"62","Cuestionario","Ha comenzado el intento",24,10
-"63","Cuestionario","Vista previa del intento iniciada",1,1
-"64","Cuestionario","Página de edición del cuestionario visitada",9,5
-"65","Consulta","Módulo de curso visto",358,944
-"66","Consulta","Consulta respondida",140,361
-"67","Consulta","Informe de Consulta visto",16,13
-"68","Comentarios de la entrega","Comentario creado",34,13
-"69","Comentarios de la entrega","Comentario eliminado",1,2
-"70","Archivos enviados","Entrega creada.",176,428
-"71","Archivos enviados","Un fichero ha sido subido.",211,461
-"72","Archivos enviados","Envío actualizado.",35,33
-"73","Hoja de cálculo Excel","Calificación XLS exportada",1,0
-"74","Entregas de texto en línea","Entrega creada.",30,71
-"75","Entregas de texto en línea","Un texto en línea ha sido subido.",38,71
-"76","Entregas de texto en línea","Envío actualizado.",8,0
-"77","Sistema","Instancia del módulo del curso visualizada",0,1
-"78","Tarea","Instancia del módulo del curso visualizada",0,1
-"79","Foro","Suscripción activada",0,1
-"80","Foro","Instancia del módulo del curso visualizada",0,4
-"81","Hoja de cálculo OpenOffice","Calificación OpenDocument exportada",0,1
-"82","Registros","Informe de registros de usuario visto",0,1
+"","Modulo","Accion","19-93062"
+"2","Registros","Informe de registros visto",28
+"3","Registros","Informe de registros de usuario visto",1
+"4","Sistema","Curso visto",25010
+"5","Sistema","Lista de usuarios vista",501
+"6","Sistema","Informe usuario del curso visto",184
+"7","Sistema","Perfil de usuario visto",155
+"8","Sistema","Usuario calificado",23890
+"9","Sistema","Módulo de curso actualizado",932
+"10","Sistema","Evento de calendario actualizado",1261
+"11","Sistema","Módulo de curso creado",91
+"12","Sistema","Sumarios de cursos vistos",42
+"13","Sistema","Evento de calendario creado",119
+"14","Sistema","Grupo asignado al agrupamiento",20
+"15","Sistema","Miembro del grupo añadido",142
+"16","Sistema","Grupo creado",18
+"17","Sistema","Agrupamiento creado",4
+"18","Sistema","Grupo desasignado del agrupamiento",1
+"19","Sistema","Miembro del grupo eliminado",18
+"20","Sistema","Grupo eliminado",1
+"21","Sistema","Curso actualizado",5
+"22","Sistema","Copia de curso creada",1
+"23","Sistema","Evento de calendario borrado",17
+"24","Sistema","Lista de insignias vista",8
+"25","Sistema","Instancia del módulo del curso visualizada",5
+"26","Sistema","Actividad reciente vista",16
+"27","Sistema","Categoría de preguntas creada",15
+"28","Sistema","Módulo de curso eliminado",1
+"29","Sistema","Usuario matriculado en curso",2
+"30","Sistema","Rol sin asignar",1
+"31","Sistema","Rol asignado",1
+"32","Foro","Módulo de curso visto",763
+"33","Foro","Tema visto",1088
+"34","Foro","Tema creado",92
+"35","Foro","Algún contenido ha sido publicado.",174
+"36","Foro","Mensaje actualizado",33
+"37","Foro","Instancia del módulo del curso visualizada",108
+"38","Foro","Se ha borrado la suscripción de esta discusión",5
+"39","Foro","Mensaje creado",49
+"40","Foro","Curso buscado",3
+"41","Foro","Se ha suscrito a esta discusión",5
+"42","Foro","Suscripción activada",2
+"43","Foro","Suscripción anulada",2
+"44","Usuario","Informe de notas de usuario visto",1612
+"45","Informe general","Informe de resumen de notas visto",95
+"46","URL","Módulo de curso visto",159
+"47","Recurso","Módulo de curso visto",3725
+"48","Informe del calificador","Informe del calificador visto",208
+"49","Tarea","Se ha visualizado el estado de la entrega.",606
+"50","Tarea","Visualización de las Calificaciones",57
+"51","Tarea","Se ha enviado una entrega",87
+"52","Tarea","Formulario de entrega visto.",150
+"53","Tarea","Instancia del módulo del curso visualizada",21
+"54","Tarea","Formulario de calificaciones visto",2
+"55","Tarea","Se ha calificado el envío.",1
+"56","Hoja de cálculo Excel","Calificación XLS exportada",42
+"57","Hoja de cálculo OpenOffice","Calificación OpenDocument exportada",3
+"58","Archivos enviados","Envío actualizado.",28
+"59","Archivos enviados","Un fichero ha sido subido.",87
+"60","Archivos enviados","Entrega creada.",59
+"61","Consulta","Módulo de curso visto",189
+"62","Consulta","Informe de selección descargado",1
+"63","Consulta","Informe de Consulta visto",11
+"64","Consulta","Consulta respondida",52
+"65","Cuestionario","Módulo de curso visto",20766
+"66","Cuestionario","Instancia del módulo del curso visualizada",83
+"67","Cuestionario","Página de edición del cuestionario visitada",136
+"68","Cuestionario","Intento de cuestionario visualizado",7924
+"69","Cuestionario","Vista previa del intento iniciada",28
+"70","Cuestionario","Informe de cuestionario visto",113
+"71","Cuestionario","Intento enviado",6464
+"72","Cuestionario","Resumen del intento de cuestionario visualizado",3288
+"73","Cuestionario","Ha comenzado el intento",6520
+"74","Cuestionario","Intento del cuestionario revisado",58
+"75","Página","Módulo de curso visto",28
+"76","Vista Simple","Informe de calificación de vista simple visto.",21
+"77","Actividad del curso","Outline report viewed",1
+"78","Detector de plagio Unicheck","Comprobación de similitud completada",70
+"79","Detector de plagio Unicheck","Carga de archivos completada",70
+"80","Detector de plagio Unicheck","Carga de archivos fallida",18
+"81","Papelera de reciclaje","Elemento creado",1
+"82","Comentarios de la entrega","Comentario creado",1
+"83","Wiki","Módulo de curso visto",34
+"84","Wiki","Página wiki vista",33
+"85","Wiki","Mapa de la página wiki visto",9
+"86","Wiki","Historia de la wiki vista",35
+"87","Wiki","Comentarios vistos",33
+"88","Wiki","Instancia del módulo del curso visualizada",4
+"89","Wiki","Versión de la página wiki vista",8
+"90","Wiki","Diff de la wiki visto",6
+"91","Wiki","Bloqueos de la página wiki borrados",10
+"92","Wiki","Página de la wiki actualizada",10
+"93","Wiki","Comentario creado",1
+"94","Wiki","Página wiki creada",1
+"95","Tours para usuarios","Tour terminado",1
+"96","Tours para usuarios","Paso mostrado",4
+"97","Tours para usuarios","Tour iniciado",2

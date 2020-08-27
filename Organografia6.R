@@ -64,7 +64,7 @@
     CursosCV <- 11100         # Cursos Virtualizados en 2017/18
     GraToFich <- "S"          # Destino de los Gráficos
     GraOpt <- ",width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100"
-    myXML <- "./Data/index_Yolanda1920.xml"
+    myXML <- "./Data/index_Pilar1920.xml"
     lang <- "Esp"
     ###     #########     #
     ###   ##         ##   #
@@ -502,7 +502,7 @@
     #########################################################  
     ## Accesos a MYSQL para conocer accesos por Titulación ##
     #########################################################
-    rDataFile <- paste("./Data/",myXML,".Rdata",sep="")
+    rDataFile <- paste(myXML,".Rdata",sep="")
     if (file.exists(rDataFile)) {load(rDataFile)
       } else {
       storiesDb <- dbConnect(RMariaDB::MariaDB(), user='us_pimcd', password='us_pimcd_BD_2020!', dbname='CV', host='127.0.0.1')
@@ -571,39 +571,102 @@
       } else {
         Sys.setlocale("LC_TIME","es_ES.UTF-8")
       }
+    # Creamos los directrorios de imágenes si no existieran
+    for (i in 1:NumCursos) {
+      subDir <- paste("imagenes",df_cursos$id[i],sep="/")
+      if (!file.exists(subDir)) dir.create(file.path(".", subDir))
+    }
     ###---------------------###
     ## 000 - CUADRO DE MANDO ##
     ###---------------------###
-    library(gridExtra)
-    df_tmp <- df_cursos[,c("id","title"),]
-    if (GraToFich == "S") {jpeg(paste("imagenes/000.jpg",sep=""),
-                                width = 1240, height = 780, units = 'px', 
-                                pointsize = 12,quality = 100)}
     for (i in 1:NumCursos) {
-      df_tmp[i,3]<-  NROW(df_alums[df_alums$Curso == i,])
-      for (j in List_Modulos_Esp) {
-        l = which (List_Modulos_Esp %in% j)
-    #    if (j %in% colnames(df_tmp))
-    #    {
-          df_tmp[i,l+3] <- round(NROW(df_alums[df_alums$Curso == i & df_alums[j] > 0,])*100 / NROW(df_alums[df_alums$Curso == i,]),digits=2)
-    #    } else {
-    #      df_tmp[i,l+2] <- round(NROW (df_alums[df_alums$Curso == i & df_alums[j] > 0,])*100 / NROW(df_alums[df_alums$Curso == i,]),digits=2)
-    #    }
-      }
+      df_alum <- df_alums[df_alums$Curso == i,]
+      df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ";",stringsAsFactors=FALSE)                         # Log de accesos al Campus Virtual - Histórico
+      if (ncol(df_log) < 6) {read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ",",stringsAsFactors=FALSE)}
+      df_log$fecha <- as.POSIXct(strptime(df_log$Hora,"%d/%m/%Y %H:%M"))
+      df_log$idCV <- sapply(strsplit(as.character(df_log$Descripción),split="The user with id '",fixed=T),"[",2)
+      df_log$idCV <- sapply(strsplit(as.character(df_log$idCV),split="'",fixed=T),"[",1)
+      colnames(df_log) <- c("hora","nombreEntero","usuario","contexto","modulo","accion","descripcion","origen","ip","fecha","idCV")              
+      df_log <- df_log[df_log$origen == "web",]
+      df_log <- df_log[(df_log$fecha >= as.POSIXct(strptime(df_cursos$fecini[i],"%Y-%m-%d")) & 
+                          df_log$fecha <= as.POSIXct(strptime(df_cursos$fecfin[i],"%Y-%m-%d"))),]
+      df_log <- subset(df_log, (df_log$idCV %in% df_alum$IdCV))
+      resumen <- as.data.frame(table(df_log$modulo,df_log$accion))
+      resumen <- resumen[!resumen$Freq == 0,]
+      colnames(resumen) <- c("Componente","Acción","Núm")
+      resumen$Acción <- paste(resumen$Componente, resumen$Acción, sep = " > ")
+      resumen$Componente <- NULL
+      resumen <- resumen[order(resumen$Núm,decreasing=T),]
+      if (GraToFich == "S") {jpeg(paste(paste("imagenes/",df_cursos$id[i],"/000.jpg",sep="")),
+                                  width = 1240, height = 780, units = 'px', 
+                                  pointsize = 12,quality = 100)}
+      tt3 <- ttheme_default(core=list(fg_params=list(hjust=0, x=0.1)),
+                            rowhead=list(fg_params=list(hjust=0, x=0)))
+      top <- nrow(resumen)
+      if (top <= 35) {
+        grid.arrange(tableGrob(resumen[1:top,1:2],rows=NULL,theme=tt3),
+                     nrow=1)
+        } else {
+          if (top <= 70) {
+            grid.arrange(tableGrob(resumen[1:35,1:2],rows=NULL,theme=tt3),
+                         tableGrob(resumen[36:top,1:2],rows=NULL,theme=tt3),
+                         nrow=1)
+            } else {
+              if (top <= 105) {
+                grid.arrange(tableGrob(resumen[1:35,1:2],rows=NULL,theme=tt3),
+                             tableGrob(resumen[36:70,1:2],rows=NULL,theme=tt3),
+                             tableGrob(resumen[71:top,1:2],rows=NULL,theme=tt3),
+                             nrow=1)
+                } else {
+                  grid.arrange(tableGrob(resumen[1:35,1:2],rows=NULL,theme=tt3),
+                               tableGrob(resumen[36:70,1:2],rows=NULL,theme=tt3),
+                               tableGrob(resumen[71:105,1:2],rows=NULL,theme=tt3),
+                               nrow=1)
+                }
+            }
+        }
+#      p <- ggplot(resumen, geom="blank") + theme_bw() + theme(line=element_blank()) + 
+#        ggtitle("Acciones Principales") + annotation_custom(tableGrob(resumen[1:20,])) 
+#      print (p)
+      if (GraToFich == "S") dev.off()
     }
-    if (lang == "Eng") {
-      names(df_tmp) <- c("id","name","Num",List_Modulos_Eng)
-      } else {
-        names(df_tmp) <- c("id","Nombre","Núm",List_Modulos_Esp)
-      }
-    #colnames(df_tmp) <- c("Cód.","Asignatura","Acceden","AutoEvaluaciones","Tareas","Recursos","Foros")
-    p <- ggplot(df_tmp, geom="blank") + theme_bw() + theme(line=element_blank()) + 
-      ggtitle("Marcadores Principales") + annotation_custom(tableGrob(df_tmp)) + ggtitle("Marcadores Principales") 
-    # + geom_bar()
-    print (p)
-    #qplot(1:10, 1:10, geom = "blank") + theme_test() + theme(line = element_blank(), text = element_blank()) +
-    #  # Then I add my table :
-    #  annotation_custom(grob = tableGrob(df_tmp))
+    
+    
+    
+    
+    
+    
+    
+#    library(gridExtra)
+#    df_tmp <- df_cursos[,c("id","title"),]
+#    if (GraToFich == "S") {jpeg(paste(paste("imagenes/",df_cursos$id[i],"/000.jpg",sep="")),
+#                                width = 1240, height = 780, units = 'px', 
+#                                pointsize = 12,quality = 100)}
+#    for (i in 1:NumCursos) {
+#      df_tmp[i,3]<-  NROW(df_alums[df_alums$Curso == i,])
+#      for (j in List_Modulos_Esp) {
+#        l = which (List_Modulos_Esp %in% j)
+#    #    if (j %in% colnames(df_tmp))
+#    #    {
+#          df_tmp[i,l+3] <- round(NROW(df_alums[df_alums$Curso == i & df_alums[j] > 0,])*100 / NROW(df_alums[df_alums$Curso == i,]),digits=2)
+#    #    } else {
+#    #      df_tmp[i,l+2] <- round(NROW (df_alums[df_alums$Curso == i & df_alums[j] > 0,])*100 / NROW(df_alums[df_alums$Curso == i,]),digits=2)
+#    #    }
+#      }
+#    }
+#    if (lang == "Eng") {
+#      names(df_tmp) <- c("id","name","Num",List_Modulos_Eng)
+#      } else {
+#        names(df_tmp) <- c("id","Nombre","Núm",List_Modulos_Esp)
+#      }
+#    #colnames(df_tmp) <- c("Cód.","Asignatura","Acceden","AutoEvaluaciones","Tareas","Recursos","Foros")
+#    p <- ggplot(df_tmp, geom="blank") + theme_bw() + theme(line=element_blank()) + 
+#      ggtitle("Marcadores Principales") + annotation_custom(tableGrob(df_tmp)) + ggtitle("Marcadores Principales") 
+#    # + geom_bar()
+#    print (p)
+#    #qplot(1:10, 1:10, geom = "blank") + theme_test() + theme(line = element_blank(), text = element_blank()) +
+#    #  # Then I add my table :
+#    #  annotation_custom(grob = tableGrob(df_tmp))
     if (GraToFich == "S") {dev.off()}
     
     ###------------------------------###
@@ -613,7 +676,7 @@
     for (i in 1:NumCursos) {
       df_grade <- df_grades[df_grades$Curso==i,] 
 
-      if (GraToFich == "S") {jpeg(paste("imagenes/001-",df_cursos$id[i],".jpg",sep=""),
+      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/001-",df_cursos$id[i],".jpg",sep=""),
                                   width = 1240, height = 780, units = 'px', 
                                   pointsize = 12,quality = 100)}
       if (df_cursos$NumNotas[i] > 3) {
@@ -648,7 +711,7 @@
       df_grade <- df_grades[df_grades$Curso==i,] 
       df_alum <- df_alums[df_alums$Curso==i,]
       if (sum(!is.na(df_alum$Main1)) > 0  & sum(!is.na(df_alum$Main2)) > 0) {
-        if (GraToFich == "S") {jpeg(paste("imagenes/002-",df_cursos$id[i],".jpg",sep=""))}
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/002-",df_cursos$id[i],".jpg",sep=""))}
         ini=grep("Main1",colnames(df_alum))[1]
         fin=ini+1
         colnames(df_alum)[ini] <- as.character(df_grade$Nombre[1])
@@ -680,7 +743,7 @@
       } else {
         title=paste("Matriculados (%) ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
       }
-      if (GraToFich == "S") {jpeg(paste("imagenes/003-",df_cursos$id[i],".jpg",sep=""),
+      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/003-",df_cursos$id[i],".jpg",sep=""),
                                   width = 360, height = 360, units = 'px', 
                                   pointsize = 12,quality = 100)}
     #  title=paste("Students enrolled (%)",df_cursos$title[i],sep=" - ")
@@ -713,7 +776,7 @@
         title=paste("Aprobados (%) ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
       }#  rm(tab)
 
-      if (GraToFich == "S") {jpeg(paste("imagenes/003.1-",df_cursos$id[i],".jpg",sep=""),
+      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/003.1-",df_cursos$id[i],".jpg",sep=""),
                                   width = 720, height = 360, units = 'px', 
                                   pointsize = 12,quality = 100)}
       legend= c(paste(colnames(tab)[1],round(tab[1,1],digits=2),"%"),paste(colnames(tab)[2],round(tab[1,2],digits=2),"%"))
@@ -745,7 +808,7 @@
         wrap.it(x, len)
       }
     }
-    if (GraToFich == "S") {jpeg(paste("imagenes/004.jpg",sep=""),
+    if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/004.jpg",sep=""),
                                 width = 1240, height = 780, units = 'px', 
                                 pointsize = 12,quality = 100)}
   #  par(mfrow=c(1,NumCursos),cex=1.5)
@@ -769,7 +832,7 @@
     #    colnames(tab_par) <- names(tab_par)[1:NumNotas]
         colnames(tab_par) <- wrap.labels(df_grade$Nombre[1:NumNotas],10)
         # colnames(tab_par)=c(1:paste("Nota",i,sep=""))
-        if (GraToFich == "S") {jpeg(paste("imagenes/004-",df_cursos$id[i],".jpg",sep=""),
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/004-",df_cursos$id[i],".jpg",sep=""),
                                     width = 1240, height = 780, units = 'px', 
                                     pointsize = 12,quality = 100)}
         par(cex=2)
@@ -806,7 +869,7 @@
       df_accFecha <- df_accFechas[df_accFechas$Curso == i,]
       for (Modulo in List_Modulos_Esp) {
         if (NROW(df_accFecha[df_accFecha[[Modulo]] > 0,]) > 0) {
-          if (GraToFich == "S") {jpeg(paste("imagenes/005-",df_cursos$id[i],"-",Modulo,".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/005-",df_cursos$id[i],"-",Modulo,".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
     ##      par(cex=5.5)
 #          df_accFecha <- df_accFechas[df_accFechas$Curso == i,]
 #          list_tareas <- as.list(df_tareas[i,])
@@ -863,7 +926,7 @@
     require("ggpubr")
     for (i in 1:NumCursos) {
       df_grade <- df_grades[df_grades$Curso==i,] 
-      if (GraToFich == "S") {jpeg(paste("imagenes/006.1-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006.1-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       df_alum <- df_alums[df_alums$Curso == i & !is.na(df_alums$Final_T),]
       if (lang == "Eng") {
         df_chart <- data.frame(row.names=c("Max.","Min","Final mark=[0,5)","Final mark=[5,8)", "Final mark=[8,10]"))
@@ -926,7 +989,7 @@
       ###---------------------------------###
       ##  006.2 - RADAR POR CALIFICACIONES ##
       ###---------------------------------###    
-      if (GraToFich == "S") {jpeg(paste("imagenes/006.2-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006.2-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       grid.draw(tableGrob(t(df_chart[])))
       if (GraToFich == "S") {dev.off()}
     }
@@ -935,6 +998,7 @@
       ###------------------------###
       ## 006-I - ANALISIS INVERSO ##
       ###------------------------###
+### Tabla con grafico en https://stackoverflow.com/questions/12318120/adding-table-within-the-plotting-region-of-a-ggplot-in-r
     for (i in 1:NumCursos) {
       df_ingrade <- df_ingrades[df_ingrades$Curso == i,]
       df_grade <- df_grades[df_grades$Curso == i,]
@@ -993,7 +1057,7 @@
         row.names(df_chart)=c("Max.","Min.",as.vector(unique(df_ingrade1$cod_split)))
         row.names(df_chart2)=c("Max.","Min.",as.vector(unique(df_ingrade1$cod_split)))
         if (ncol(df_chart) > 0) {
-          if (GraToFich == "S") {jpeg(paste("imagenes/006-I-",df_cursos$id[i],"-",grupo,".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
           colors_border=c( rgb(0.2,0.5,0.5,0.9), rgb(0.8,0.2,0.5,0.9) , rgb(0.7,0.5,0.1,0.9),"DarkGreen")
           colors_in=c( rgb(0.2,0.5,0.5,0.4), rgb(0.8,0.2,0.5,0.4) , rgb(0.7,0.5,0.1,0.4),rgb(0.5,0.7,0.5,0.4) )
           if (lang == "Eng") {
@@ -1008,7 +1072,7 @@
             legend(x=1, y=1.3, legend = rownames(df_chart[-c(1,2),]), bty = "n", pch=20, col=colors_border, text.col = "black", cex=1.2, pt.cex=3)
             if (GraToFich == "S") {dev.off()}
           }
-          if (GraToFich == "S") {jpeg(paste("imagenes/006-I-",df_cursos$id[i],"-",grupo,"(tabla).jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,"(tabla).jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
           grid.newpage() 
           pushViewport(viewport(layout=grid.layout(2, 1, widths=unit(c(5,4), "inches"))))
           pushViewport(viewport(layout.pos.col=1, layout.pos.row=2)) 
@@ -1031,7 +1095,7 @@
     for (i in 1:NumCursos) {
       df_alum <- df_alums[df_alums$Curso == i,]
       if (NROW(unique(df_alum$Matrícula)) > 1 ) {
-        if (GraToFich == "S") {jpeg(paste("imagenes/007-",df_cursos$id[i],".jpg",sep=""),width = 1240, 
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/007-",df_cursos$id[i],".jpg",sep=""),width = 1240, 
                                     height = 780, units = 'px', pointsize = 12,quality = 100)}
         p <- ggplot(df_alum, aes(x = factor(Matrícula), y = Final_T)) + 
           geom_boxplot() + 
@@ -1049,7 +1113,7 @@
     for (i in 1:NumCursos) {
       df_alum <- df_alums[df_alums$Curso == i,]
       if (NROW(unique(df_alum$Convocatoria)) > 1 ) {
-        if (GraToFich == "S") {jpeg(paste("imagenes/008-",df_cursos$id[i],".jpg",sep=""),width = 1240, 
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/008-",df_cursos$id[i],".jpg",sep=""),width = 1240, 
                                     height = 780, units = 'px', pointsize = 12,quality = 100)}
         p <- ggplot(df_alum, aes(x = factor(Convocatoria), y = Final_T)) + 
           geom_boxplot() + 
@@ -1067,7 +1131,7 @@
     for (i in 1:NumCursos) {
       df_alum <- df_alums[df_alums$Curso == i,]
       if (NROW(unique(df_alum$Procedencia)) > 1 ) {
-        if (GraToFich == "S") {jpeg(paste("imagenes/009-",df_cursos$id[i],".jpg",sep=""),width = 1240, 
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/009-",df_cursos$id[i],".jpg",sep=""),width = 1240, 
                                     height = 780, units = 'px', pointsize = 12,quality = 100)}
         p <- ggplot(df_alum, aes(x = Procedencia, y = Final_T)) + 
           geom_boxplot(outlier.shape = NA,show.legend=F,aes(color=factor(df_alum$Procedencia))) + 
@@ -1086,7 +1150,7 @@
     ##Distribución de Calificaciones
       for (i in 1:NumCursos) {
         df_grade <- df_grades[df_grades$Curso==i,]
-        if (GraToFich == "S") {jpeg(paste("imagenes/014-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/014-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       #  if (GraToFich == "S") {jpeg(paste("imagenes/014-",i,".jpg",sep=""))}
         df_alum <- df_alums[df_alums$Curso == i,]
         ini=grep("Main1",colnames(df_alum))[1]
@@ -1116,7 +1180,7 @@
       #accDia_Centro$Contador <- as.integer(round(as.integer(accDia_Centro$Contador)/2,digits=5))
       #accDia_Centro$Contador <- as.integer(round(as.integer(accDia_Centro$Contador) / (NumEspaciosCentro*2),digits=0))
       for (i in 1:NumCursos) {
-        if (GraToFich == "S") {jpeg(paste("imagenes/015-",df_cursos$id[i],".jpg",sep=""),
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/015-",df_cursos$id[i],".jpg",sep=""),
                                     width = 1240, height = 780, units = 'px', 
                                     pointsize = 12,quality = 100)}
         NumEspaciosCentro <- as.numeric(as.character(df_ContEspaciosEstudios$numEspacios[df_ContEspaciosEstudios$estudios == df_cursos$degree[i] &
@@ -1227,7 +1291,7 @@
           acc_hora[3,j] <- round((as.numeric(accHora_CV[j,2])/24)/CursosCV,digits=2)
       
         }
-        if (GraToFich == "S") {jpeg(paste("imagenes/016-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/016-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
         if (lang == "Eng") {
           dayweek <- dayweek_eng
           cabecera <- "Site views per weekday (mean)"
@@ -1246,7 +1310,7 @@
       ###--------------------------------###
       ## 017 - ACCESOS POR FRANJA HORARIA ##
       ###--------------------------------###
-        if (GraToFich == "S") {jpeg(paste("imagenes/017-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/017-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       #if (GraToFich == "S") {jpeg('imagenes/017.jpg')}
         if (lang == "Eng") {
           cabecera <- "Site views per hours of the day (mean)" 
@@ -1269,7 +1333,7 @@
       ## 018 - MAPA DE CALOR ACTIVIDAD DEL CURSO ##
       ###---------------------------------------###
       for (i in 1:NumCursos) {
-        if (GraToFich == "S") {jpeg(paste("imagenes/018-",df_cursos$id[i],".jpg",sep=""),
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/018-",df_cursos$id[i],".jpg",sep=""),
                                     width = 1240, height = 780, units = 'px', 
                                     pointsize = 12,quality = 100)}
         df_log <- df_logs[df_logs$Curso == i,]
@@ -1299,7 +1363,7 @@
         df_tmp$IdCV <- as.integer(df_tmp$IdCV)
         Col_Final <- grep("Final_T",colnames(df_alum))[1]
         rpart_arg <- paste(colnames(df_alum)[Col_Final]," ~ ",sep="")
-        fich <- paste("imagenes/019-",df_cursos$id[i],"-Final_T.jpg",sep="")
+        fich <- paste("imagenes/",df_cursos$id[i],"/019-",df_cursos$id[i],"-Final_T.jpg",sep="")
         if (GraToFich == "S") {jpeg(fich,width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       #  if (GraToFich == "S") {jpeg(fich)}
         par(mfrow=c(2,1))
@@ -1345,7 +1409,7 @@
         k=0
         for (j in ini:fin) {
           k=k+1
-          fich <- paste("imagenes/020-",df_cursos$id[i],"-",j,".jpg",sep="")
+          fich <- paste("imagenes/",df_cursos$id[i],"/020-",df_cursos$id[i],"-",j,".jpg",sep="")
           if (GraToFich == "S") {jpeg(fich,width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       #    if (GraToFich == "S") {jpeg(fich)}
           par(mfrow=c(2,1))
@@ -1391,17 +1455,26 @@
       ## Acceso a recursos              ##
       ####################################
       ## 
-      for  (i in c(1:NumCursos)){
-        df_recurso <- df_recursos[df_recursos$Curso==i,] 
-        df_tmp <- subset(df_logs,df_logs$Curso == i & df_logs$Módulo == "Recurso" & df_logs$Acción == "Módulo de curso visto")
-        df_rescurso$Sum <- sapply(df_tmp$Rec)
-        df_tmp$Recurso <-sapply(df_tmp$Otros,function (x) {unlist(strsplit(x,"'"))[6]})
+      for  (i in c(1:NumCursos)) {
+#        df_recurso <- df_recursos[df_recursos$Curso==i,] 
+#        df_tmp <- subset(df_logs,df_logs$Curso == i & df_logs$Módulo == "Recurso" & df_logs$Acción == "Módulo de curso visto")
+#        df_rescurso$Sum <- sapply(df_tmp$Rec)
+#        df_tmp$Recurso <-sapply(df_tmp$Otros,function (x) {unlist(strsplit(x,"'"))[6]})
+#        
+#        sumrecursos <- table (df_tmp$IdCV,df_tmp$Recurso)
         
-        sumrecursos <- table (df_tmp$IdCV,df_tmp$Recurso)
+        df_accFecha <- df_accFechas[df_accFechas$Cursos == i,]
+        df_alum <- df_alums_original[df_alums_original$Curso == i,]
+        df_log <- df_logs[df_logs$Curso == i,]
+        write.csv(df_alum,
+                  paste("imagenes/",df_cursos$id[i],"/df_alums_",df_cursos$id[i],".csv",sep=""))
+        write.csv(df_log,
+                  paste("imagenes/",df_cursos$id[i],"/df_logs_",df_cursos$id[i],".csv",sep=""))
+        write.csv(data.frame(df_accFecha[1],apply(df_accFecha[2:NCOL(df_accFecha)],2,as.character)),
+                  paste("imagenes/",df_cursos$id[i],"/df_accFechas_",df_cursos$id[i],".csv",sep=""))
+        
       }
-      write.csv(df_alums_original,"imagenes/df_alums.csv")
-      write.csv(df_logs,"imagenes/df_logs.csv")
-      write.csv(data.frame(df_accFechas[1],apply(df_accFechas[2:NCOL(df_accFechas)],2,as.character)),"imagenes/df_accFechas.csv")
+#      fich <- paste("imagenes/,",df_cursos$id[i],"/df_alums_",df_cursos$id[i],".csv",sep="")
     
       #######################################
       ## Archivo de intercambio con Carmen ##
@@ -1455,7 +1528,7 @@
                                              "Wikis"=18,"Curso"=19)
 )
 #      df_carmen <- df_carmen[,c("codAsignatura","NomAsignatura","Profesor","CursoAcademico",2:45)]
-      write.csv (df_carmen,paste("imagenes/Yolanda.csv"))
+      write.csv (df_carmen,paste("imagenes/Pilar.csv"))
       df_carmen1 <- data.frame(matrix(ncol = 4, nrow = 0))
       df_carmen1[] <- lapply(df_carmen1, as.character)
       
@@ -1476,12 +1549,12 @@
         }
       }
       colnames(df_carmen1) <- c("Curso","Columna","Nombre","Valor_Maximo")
-      write.csv (df_carmen1,paste("imagenes/Yolanda_index.csv"))
+      write.csv (df_carmen1,paste("imagenes/Pilar_index.csv"))
 
       
       
       
-        library(caret)   
+      library(caret)   
       library(randomForest) 
       set.seed (2020)
       df_alum <- df_alums[df_alums$Curso == i,]
@@ -1535,7 +1608,7 @@ arbol=rpart(Final_T~Tot_A + Tot_E + Tot_I, data=df_alum_new, method="anova",na.a
 arbol
 printcp(arbol)
 rsq.rpart(arbol);
-if (GraToFich == "S") {jpeg('imagenes/020-10.jpg')}
+if (GraToFich == "S") {jpeg('imagenes/",df_cursos$id[i],"/020-10.jpg')}
 par(mfrow=c(1,1))
 rpart.plot(arbol,
            shadow.col="gray",
