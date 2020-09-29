@@ -600,42 +600,50 @@
       df_log <- subset(df_log, (df_log$idCV %in% df_alum$IdCV))
       resumen <- as.data.frame(table(df_log$modulo,df_log$accion))
       resumen <- resumen[!resumen$Freq == 0,]
-      colnames(resumen) <- c("Componente","Acción","Núm")
+      resumen1 <- as.data.frame(table(df_log$modulo,df_log$accion,df_log$idCV))
+      resumen1 <- resumen1[!resumen1$Freq == 0,]
+      resumen1 <- as.data.frame(table(resumen1$Var1,resumen1$Var2))
+      resumen1 <- resumen1[!resumen1$Freq == 0,]
+      resumen <- cbind(resumen,resumen1$Freq)
+      colnames(resumen) <- c("Componente","Acción","Veces","Usuarios")
       resumen$Acción <- paste(resumen$Componente, resumen$Acción, sep = " > ")
       resumen$Componente <- NULL
-      resumen <- resumen[order(resumen$Núm,decreasing=T),]
+      resumen <- resumen[order(resumen$Veces,decreasing=T),]
       if (GraToFich == "S") {jpeg(paste(paste("imagenes/",df_cursos$id[i],"/000.jpg",sep="")),
                                   width = 1240, height = 780, units = 'px', 
                                   pointsize = 12,quality = 100)}
       tt3 <- ttheme_default(core=list(fg_params=list(hjust=0, x=0.1)),
                             rowhead=list(fg_params=list(hjust=0, x=0)))
+      titulo=textGrob(paste("Resumen de acciones para el curso: ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
+                      ,gp=gpar(fontsize=20,font=3))
       top <- nrow(resumen)
       if (top <= 35) {
-        grid.arrange(tableGrob(resumen[1:top,1:2],rows=NULL,theme=tt3),
-                     nrow=1)
+        grid.arrange(tableGrob(resumen[1:top,1:3],rows=NULL,theme=tt3),
+                     nrow=1,top=titulo)
         } else {
           if (top <= 70) {
-            grid.arrange(tableGrob(resumen[1:35,1:2],rows=NULL,theme=tt3),
-                         tableGrob(resumen[36:top,1:2],rows=NULL,theme=tt3),
-                         nrow=1)
+            grid.arrange(tableGrob(resumen[1:35,1:3],rows=NULL,theme=tt3),
+                         tableGrob(resumen[36:top,1:3],rows=NULL,theme=tt3),
+                         nrow=1,top=titulo)
             } else {
               if (top <= 105) {
-                grid.arrange(tableGrob(resumen[1:35,1:2],rows=NULL,theme=tt3),
-                             tableGrob(resumen[36:70,1:2],rows=NULL,theme=tt3),
-                             tableGrob(resumen[71:top,1:2],rows=NULL,theme=tt3),
-                             nrow=1)
+                grid.arrange(tableGrob(resumen[1:35,1:3],rows=NULL,theme=tt3),
+                             tableGrob(resumen[36:70,1:3],rows=NULL,theme=tt3),
+                             tableGrob(resumen[71:top,1:3],rows=NULL,theme=tt3),
+                             nrow=1,top=titulo)
                 } else {
-                  grid.arrange(tableGrob(resumen[1:35,1:2],rows=NULL,theme=tt3),
-                               tableGrob(resumen[36:70,1:2],rows=NULL,theme=tt3),
-                               tableGrob(resumen[71:105,1:2],rows=NULL,theme=tt3),
-                               nrow=1)
+                  grid.arrange(tableGrob(resumen[1:35,1:3],rows=NULL,theme=tt3),
+                               tableGrob(resumen[36:70,1:3],rows=NULL,theme=tt3),
+                               tableGrob(resumen[71:105,1:3],rows=NULL,theme=tt3),
+                               nrow=1,top=titulo)
                 }
             }
         }
+      
 #      p <- ggplot(resumen, geom="blank") + theme_bw() + theme(line=element_blank()) + 
 #        ggtitle("Acciones Principales") + annotation_custom(tableGrob(resumen[1:20,])) 
 #      print (p)
-      if (GraToFich == "S") dev.off()
+      if (GraToFich == "S") {dev.off()}
     }
     
     
@@ -674,7 +682,7 @@
 #    #qplot(1:10, 1:10, geom = "blank") + theme_test() + theme(line = element_blank(), text = element_blank()) +
 #    #  # Then I add my table :
 #    #  annotation_custom(grob = tableGrob(df_tmp))
-    if (GraToFich == "S") {dev.off()}
+#    if (GraToFich == "S") {dev.off()}
     
     ###------------------------------###
     ## 001 - PARES POR CALIFICACIONES ##
@@ -914,7 +922,7 @@
           p <- p + scale_color_manual(name="HITOS",values = colors,
                                       breaks = c("Eva", "Tar", "Par","Pru","For"),
                                       labels = c("Autoevaluaciones", "Trabajos", "Exámenes","Pruebas","Foros")) +
-            scale_linetype_manual(values = c("dashed"))
+              scale_linetype_manual(values = c("dashed"))
           print (p)
           
           if (GraToFich == "S") {dev.off()}
@@ -970,12 +978,14 @@
         lista <- lista[2:(length(lista)-1)]
         df_chart <- df_chart %>% select(Tramo,Num,lista)
         df_chart2 <- df_chart
+        lista.z <- c(NULL)
         for (col in lista) {
           name <- paste("z",col,sep=".")
-          df_chart2[name] <- rescale(df_chart2[,col])
+          df_chart2[name] <- rescale(df_chart2[,col],to=c(0,1))
+          lista.z <- c(lista.z,name)
         }
         setDT(df_chart2)  # Convertimos df_chart en table
-        dat2test <- melt.data.table(df_chart2[,-2],"Tramo",lista) # Eliminamios la columna Num
+        dat2test <- melt.data.table(df_chart2[,-2],"Tramo",lista.z) # Eliminamios la columna Num
 
         if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006.1-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
         thePlot <-  ggplot(data = dat2test, aes(x=variable, y=value, group=Tramo, color= Tramo)) + ## Define data and colour column
@@ -986,8 +996,16 @@
           coord_polar() +
           ggtitle(tit)
         stable.p <- ggtexttable(df_chart, rows = NULL, theme = ttheme("mBlue"))
-        h <- ggdraw(thePlot)
-        h + draw_grob(ggplotGrob(stable.p), vjust=0.4,hjust=-0.25)
+#        h <- ggdraw(thePlot) +
+#          annotation_custom(grob=rectGrob(gp=gpar(fill="red")),
+#                            xmin=2.5,
+#                            xmax=Inf,
+#                            ymin=-Inf,
+#                            ymax=5)
+        h <- grid.arrange(ggdraw(thePlot),tableGrob(df_chart[,-1]),nrow=1) 
+#        h <- ggdraw(thePlot)
+#        h + cowplot::draw_grob(ggplotGrob(stable.p), vjust=0.4,hjust=-0.25)
+        print(h)
         if (GraToFich == "S") dev.off()
         }
       }
@@ -1055,7 +1073,6 @@
         row.names(df_chart)=c("Max.","Min.",as.vector(unique(df_ingrade1$cod_split)))
         row.names(df_chart2)=c("Max.","Min.",as.vector(unique(df_ingrade1$cod_split)))
         if (ncol(df_chart) > 0) {
-          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
           colors_border=c( rgb(0.2,0.5,0.5,0.9), rgb(0.8,0.2,0.5,0.9) , rgb(0.7,0.5,0.1,0.9),"DarkGreen")
           colors_in=c( rgb(0.2,0.5,0.5,0.4), rgb(0.8,0.2,0.5,0.4) , rgb(0.7,0.5,0.1,0.4),rgb(0.5,0.7,0.5,0.4) )
           if (lang == "Eng") {
@@ -1063,26 +1080,47 @@
             } else {
               tit = paste("Cluster por grupos de ",grupo," (",df_cursos$title[i],")\n(",df_cursos$id[i],")",sep="")
             }
-          if (ncol(df_chart)> 3) {
-            radarchart(df_chart[,-1], axistype=2, maxmin=T, pcol=colors_border, pfcol=colors_in, plwd=4 , plty=1,
-                 #            cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1000,10), cglwd=0.8, seg=max(df_chart)/10, title=paste("Cluster por grupos de Notas (",df_cursos$title[i],")",sep="")
-                 cglcol="black", cglty=1, axislabcol="black", cglwd=0.8, seg=10,title=tit)
-            legend(x=1, y=1.3, legend = rownames(df_chart[-c(1,2),]), bty = "n", pch=20, col=colors_border, text.col = "black", cex=1.2, pt.cex=3)
-            if (GraToFich == "S") {dev.off()}
+#          if (ncol(df_chart)> 3) {
+#            radarchart(df_chart[,-1], axistype=2, maxmin=T, pcol=colors_border, pfcol=colors_in, plwd=4 , plty=1,
+#                 #            cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1000,10), cglwd=0.8, seg=max(df_chart)/10, title=paste("Cluster por grupos de Notas (",df_cursos$title[i],")",sep="")
+#                 cglcol="black", cglty=1, axislabcol="black", cglwd=0.8, seg=10,title=tit)
+#            legend(x=1, y=1.3, legend = rownames(df_chart[-c(1,2),]), bty = "n", pch=20, col=colors_border, text.col = "black", cex=1.2, pt.cex=3)
+#            if (GraToFich == "S") {dev.off()}
+#          }
+#          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,"(tabla).jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+#          grid.newpage() 
+#          pushViewport(viewport(layout=grid.layout(2, 1, widths=unit(c(5,4), "inches"))))
+#          pushViewport(viewport(layout.pos.col=1, layout.pos.row=2)) 
+#    #      print(df_chart, newpage=FALSE) 
+#          popViewport(1)
+#          pushViewport(viewport(x=0.8, y=0.8, clip="off",gp=gpar(cex=0.9,alpha=0.9)))
+#    #     grid.arrange(top="Iris dataset", tableGrob(t(df_chart[-c(1:2),])))
+#    #
+#          grid.draw(tableGrob(t(df_chart[-c(1:2),])))
+#          pushViewport(viewport(x=0.5, y=0.1, clip="off",gp=gpar(cex=0.9,alpha=0.9)))
+#          grid.draw(tableGrob(t(df_chart2[-c(1:2),])))
+#          popViewport()
+          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,".jpg",sep=""),
+                                      width = 1240, height = 780, units = 'px',
+                                      pointsize = 12,quality = 100)}
+          library(ggplotify)
+          if (ncol(df_chart) > 3) {
+            thePlot <- as.ggplot(~radarchart(df_chart[,-1], axistype=2, maxmin=T, pcol=colors_border, pfcol=colors_in, 
+                       plwd=4 , plty=1,cglcol="black", cglty=1, axislabcol="black", cglwd=0.8, seg=10,title=tit)) 
+#            thePlot <- thePlot + as.ggplot(legend(x=1, y=1.3, legend = rownames(df_chart[-c(1,2),]), bty = "n", pch=20, 
+#                                                  col=colors_border, text.col = "black", cex=1.2, pt.cex=3))
+            h <- thePlot +
+              annotation_custom(
+                grob = tableGrob(df_chart[-c(1:2),]),
+                xmin = 0.2,
+                xmax = 0.9,
+                ymin = 0.2,
+                ymax = 0
+              )
+            print (h)
+#            grid.arrange(thePlot,grid.raster(as.matrix(df_chart[-c(1:2),]),vp=viewport(angle=90)),nrow=1)
+#            grid.arrange(thePlot,ggtexttable(df_chart[-c(1:2),]),nrow=1)
           }
-          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,"(tabla).jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
-          grid.newpage() 
-          pushViewport(viewport(layout=grid.layout(2, 1, widths=unit(c(5,4), "inches"))))
-          pushViewport(viewport(layout.pos.col=1, layout.pos.row=2)) 
-    #      print(df_chart, newpage=FALSE) 
-          popViewport(1)
-          pushViewport(viewport(x=0.8, y=0.8, clip="off",gp=gpar(cex=0.9,alpha=0.9)))
-    #     grid.arrange(top="Iris dataset", tableGrob(t(df_chart[-c(1:2),])))
-    #
-          grid.draw(tableGrob(t(df_chart[-c(1:2),])))
-          pushViewport(viewport(x=0.5, y=0.1, clip="off",gp=gpar(cex=0.9,alpha=0.9)))
-          grid.draw(tableGrob(t(df_chart2[-c(1:2),])))
-          popViewport()
           if (GraToFich == "S") {dev.off()}
         }
       }
