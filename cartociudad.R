@@ -17,10 +17,16 @@ casa <- cartociudad_geocode("calle Valle del Tiétar 19, Villanueva de la Cañad
 #casa <- cartociudad_geocode("Avenida Senenca 2, madrid")
 geocode <- cartociudad_geocode("calle valle del tiétar 19, Villanueva de la Cañada, Madrid")
 geocode <- cartociudad_geocode("calle Sancho García 17, Sepúlveda, Segovia")
+geocode <- cartociudad_geocode("Calle Segovia 16,Madrona, Segovia")
 cartociudad_get_location_info(geocode$lat,geocode$lng,year=2010,info.source=c("census","cadastre","reverse"))
-
-mapa_casa <- cartociudad_get_map(c(casa$lat,casa$lng),
-                                 0.1,
+# Finca Madrona
+geocode$lat <- 40.893845
+geocode$lng <- -4.174925
+# Finca Alejo Madrona
+geocode$lat <- 40.893758
+geocode$lng <- -4.173561
+mapa_casa <- cartociudad_get_map(c(geocode$lat,geocode$lng),
+                                 0.2,
                                  add.postcode.area = T,
                                  add.cadastral.layer = F,
                                  add.censal.section = F)
@@ -53,3 +59,4 @@ centro <- c(so.lat + (ne.lat - so.lat)/2,
             so.lon + (ne.lon - so.lon)/2)
 mapa <- cartociudad_get_map(centro, 9)
 ggmap(mapa) + geom_point(aes(x = lon, y = lat), data = localizaciones)
+

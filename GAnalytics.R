@@ -16,8 +16,8 @@ df_log$idCV <- sapply(strsplit(as.character(df_log$idCV),split="'",fixed=T),"[",
 
 
 id.moodle <- "118059"
-start_date <- "2019-09-09"
-end_date <- "2019-12-20"
+start_date <- "2019-09-05"
+end_date <- "2020-09-15"
 ## Calculamos las sesiones por día de todos los cursos
 cargar_sesiones_global = function (fecha_ini,fecha_fin) {
   df1 <- dim_filter("pagePath",operator = "REGEXP",expressions = "^/moodle/course/view.php")
@@ -57,16 +57,18 @@ cargar_sesiones_global = function (fecha_ini,fecha_fin) {
                          anti_sample=T,
                          anti_sample_batches=1)
   #                               max=-1)
+  df <- df[grep("^/moodle/course/view.php\\?id\\=",df$pagePath),]
   df$curso <- data.frame(do.call('rbind', strsplit(as.character(df$pagePath),'=',fixed=TRUE)))[2]
   df <- df[df$sessions > 0,]
   df$pagePath <-NULL
   colnames(df) <- c("Fecha","Sesiones","Curso")
   df <- df[df$Curso != "null",]
-  df <- df[df$Curso != "/moodle/course/view.php",]
+  df <- df[df$Curso != "/moodle/course/view.php?id",]
   return (df)
 }
-if (file.exists("./Data/GA_Sesiones.Rdata")) { 
-  load("./Data/GA_Sesiones.Rdata",verbose=F)
+fich <- "../Data/GA_Sesiones_Global.Rdata"
+if (file.exists(fich)) { 
+  load(fich,verbose=F)
   if (start_date < min(ga_total$Fecha)) {
     df_temp <- cargar_sesiones_global(start_date,min(ga_total$Fecha)-1)
     ga_total <- ga_total %>% add_row(df_temp)
@@ -87,7 +89,7 @@ graph <- ggplot(data=accmean, aes(x=Fecha)) +
   scale_x_date(breaks = date_breaks("weeks"),labels = date_format("%d/%m/%Y")) +
   theme(axis.text.x = element_text(angle=45))
 print (graph)
-save(ga_total,file="./Data/GA_Sesiones_Global.Rdata")
+save(ga_total,file=fich)
 
 #######################################
 ## Consulta de accesos para el curso ##
@@ -144,7 +146,7 @@ if (file.exists(curso_file)) {
 } else { 
   ga_data <- cargar_sesiones_curso(id.moodle,start_date,end_date)
 } 
-save(ga_data,file=curso_file))
+save(ga_data,file=curso_file)
 
 accFecha <- aggregate(sessions ~ dia, data=ga_data,sum)
 library(caRtociudad)

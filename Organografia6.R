@@ -14,6 +14,13 @@
     library(ggplot2)          ## Librería de gráficos
     library (lattice)         ## Librería de Gráficos 
     library (RMariaDB)
+    library (gridExtra)       ## Libreria Complementaria para ggplot
+    library(dplyr)
+    library(scales)
+    library(reshape2)
+    library(data.table)
+    library(cowplot)
+    library(scales)           ## Libreria para reescalado de datos
     require(XML)              ## Librería para tratar archivos XML
     #colors<-c("#3F748F","#6ABADD","#F39C1D","#8A5B9D","#A7BA17","#AAAAAA","#2A3A4A")
     colors<-c("Red","Blue","Green","Brown","#A7BA17","#AAAAAA","#2A3A4A")
@@ -672,7 +679,6 @@
     ###------------------------------###
     ## 001 - PARES POR CALIFICACIONES ##
     ###------------------------------###
-    library("dplyr")
     for (i in 1:NumCursos) {
       df_grade <- df_grades[df_grades$Curso==i,] 
 
@@ -922,77 +928,69 @@
     library (fmsb)
     library(ggiraph)
     library(ggiraphExtra)
-    #require("gridExtra")
     require("ggpubr")
     for (i in 1:NumCursos) {
       df_grade <- df_grades[df_grades$Curso==i,] 
-      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006.1-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
       df_alum <- df_alums[df_alums$Curso == i & !is.na(df_alums$Final_T),]
-      if (lang == "Eng") {
-        df_chart <- data.frame(row.names=c("Max.","Min","Final mark=[0,5)","Final mark=[5,8)", "Final mark=[8,10]"))
-      } else {
-        df_chart <- data.frame(row.names=c("Max.","Min","Nota Final=[0,5)","Nota Final=[5,8)", "Nota Final=[8,10]"))
-      }
-    #                         ,row.names=c("Num",List_Modulos_Esp))
-      df_chart[3,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) < 5,])
-      df_chart[4,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) > 5 & as.numeric(as.character(df_alum$Final_T)) < 8,])
-      df_chart[5,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 8,])
-      df_chart[1,1] <- round(max(df_chart[,1],na.rm=T),digits=0)
-      df_chart[2,1] <- 0
-      for (j in List_Modulos_Esp) {
-        k = which (List_Modulos_Esp %in% j)+1
-    #    df_chart[1,k] <- mean(df_alum[df_alum$Final_T < 5,][[j]])
-    #    df_chart[2,k] <- mean(df_alum[df_alum$Final_T >= 5 & df_alum$Final_T < 8,][[j]])
-    #    df_chart[3,k] <- mean(df_alum[df_alum$Final_T >= 8,][[j]])
-        df_chart[3,k] <- round(sum(df_alum[as.numeric(as.character(df_alum$Final_T)) < 5,][[j]])/df_chart[3,1],digits=2)
-        df_chart[4,k] <- round(sum(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 5 & as.numeric(as.character(df_alum$Final_T)) < 8,][[j]])/df_chart[4,1],digits=2)
-        df_chart[5,k] <- round(sum(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 8,][[j]])/df_chart[5,1],digits=2)
-        df_chart[1,k] <- round(max(df_chart[,k],na.rm=T),digits=0)
-        df_chart[2,k] <- 0
-      }
-    #  df_chart<-rbind(rep(escala,length(List_Modulos_Esp)+1),rep(0,length(List_Modulos_Esp)+1),df_chart)
-    #  df_chart<-rbind(rep(max(df_chart),length(List_Modulos_Esp)+1),rep(0,length(List_Modulos_Esp)+1),df_chart)
-      if (lang == "Eng") {
-        colnames(df_chart)<-c("Num",List_Modulos_Eng)
-      } else {
-        colnames(df_chart)<-c("Num",List_Modulos_Esp) 
-      }
+      if (nrow(df_alum) > 0 & nrow(df_grade) > 0) {
+        if (lang == "Eng") {
+          df_chart <- data.frame(row.names=c("Max.","Min","Final mark=[0,5)","Final mark=[5,8)", "Final mark=[8,10]"))
+          } else {
+            df_chart <- data.frame(row.names=c("Max.","Min","Nota Final=[0,5)","Nota Final=[5,8)", "Nota Final=[8,10]"))
+            }
+        df_chart[3,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) < 5,])
+        df_chart[4,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) > 5 & as.numeric(as.character(df_alum$Final_T)) < 8,])
+        df_chart[5,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 8,])
+        df_chart[1,1] <- round(max(df_chart[,1],na.rm=T),digits=0)
+        df_chart[2,1] <- 0
+        for (j in List_Modulos_Esp) {
+          k = which (List_Modulos_Esp %in% j)+1
+          df_chart[3,k] <- round(sum(df_alum[as.numeric(as.character(df_alum$Final_T)) < 5,][[j]])/df_chart[3,1],digits=2)
+          df_chart[4,k] <- round(sum(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 5 & as.numeric(as.character(df_alum$Final_T)) < 8,][[j]])/df_chart[4,1],digits=2)
+          df_chart[5,k] <- round(sum(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 8,][[j]])/df_chart[5,1],digits=2)
+          df_chart[1,k] <- round(max(df_chart[,k],na.rm=T),digits=0)
+          df_chart[2,k] <- 0
+        }
+        if (lang == "Eng") {colnames(df_chart)<-c("Num",List_Modulos_Eng)
+        } else {
+          colnames(df_chart)<-c("Num",List_Modulos_Esp) 
+          }
       #  Limpiamos los módulos que no tienen valores
-      df_chart <-df_chart[,df_chart[1,] > 2]  
-      colors_border=c( rgb(0.2,0.5,0.5,0.9), rgb(0.8,0.2,0.5,0.9) , rgb(0.7,0.5,0.1,0.9) )
-      colors_in=c( rgb(0.2,0.5,0.5,0.4), rgb(0.8,0.2,0.5,0.4) , rgb(0.7,0.5,0.1,0.4) )
-      if (lang == "Eng") {
-        tit = paste("Clusters according to Final Grades - ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
-      } else {
-        tit = paste("Cluster por grupos de Notas - ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
+        df_chart <-df_chart[,df_chart[1,] > 2]  
+#      colors_border=c( rgb(0.2,0.5,0.5,0.9), rgb(0.8,0.2,0.5,0.9) , rgb(0.7,0.5,0.1,0.9) )
+#      colors_in=c( rgb(0.2,0.5,0.5,0.4), rgb(0.8,0.2,0.5,0.4) , rgb(0.7,0.5,0.1,0.4) )
+        if (lang == "Eng") {
+          tit = paste("Clusters according to Final Grades - ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
+          } else {
+            tit = paste("Cluster por grupos de Notas - ",df_cursos$title[i],"\n(",df_cursos$id[i],")",sep="")
+            }
+        df_chart <- df_chart[-c(1:2),]
+        df_chart$Tramo <- rownames(df_chart)
+        lista <- colnames(df_chart)
+        lista <- lista[2:(length(lista)-1)]
+        df_chart <- df_chart %>% select(Tramo,Num,lista)
+        df_chart2 <- df_chart
+        for (col in lista) {
+          name <- paste("z",col,sep=".")
+          df_chart2[name] <- rescale(df_chart2[,col])
+        }
+        setDT(df_chart2)  # Convertimos df_chart en table
+        dat2test <- melt.data.table(df_chart2[,-2],"Tramo",lista) # Eliminamios la columna Num
+
+        if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006.1-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
+        thePlot <-  ggplot(data = dat2test, aes(x=variable, y=value, group=Tramo, color= Tramo)) + ## Define data and colour column
+          geom_polygon(fill = NA) + ## make the lines meet
+          theme_bw() +
+          theme(text = element_text(size=20),axis.title.x=element_blank(),
+                axis.text.y=element_blank(),axis.title.y=element_blank()) +
+          coord_polar() +
+          ggtitle(tit)
+        stable.p <- ggtexttable(df_chart, rows = NULL, theme = ttheme("mBlue"))
+        h <- ggdraw(thePlot)
+        h + draw_grob(ggplotGrob(stable.p), vjust=0.4,hjust=-0.25)
+        if (GraToFich == "S") dev.off()
+        }
       }
-    #1  stable <- df_chart[ -c(1:2),]
-    #1  stable.p <- ggtexttable(stable, rows = NULL, theme = ttheme("mOrange"))
-    #1  g0 <- ggRadar(data=df_chart[,-1],rescale=TRUE)
-      g0 <- radarchart(df_chart[,-1], axistype=2, maxmin=T, 
-                       pcol=colors_border, pfcol=colors_in,
-                       plwd=4 , plty=1,
-                       cglcol="black", cglty=1, axislabcol="black", cglwd=0.8, seg=10,title=tit)
-    #  g0 <- g0 + legend(x=1, y=1.3, legend = rownames(df_chart[-c(1,2),]), bty = "n", pch=20, 
-    #                     col=colors_border, text.col = "black", cex=1.2, pt.cex=3)
-    #  g0 <- g0 + annotation_custom(ggplotGrob(stable.p),
-    #                               xmin = 0, ymin = 0,
-    #                               xmax = 0.8)
-      legend(x=1, y=1.3, legend = rownames(df_chart[-c(1,2),]), bty = "n", pch=20, 
-             col=colors_border, text.col = "black", cex=1.2, pt.cex=3)
-    #1  library(cowplot)
-    #1  h <- ggdraw(g0)
-    #1  ## tweak this to fit your plot
-    #1  h + draw_grob(ggplotGrob(stable.p), 0.4, 0.48, 0.37, 0.37)
-      grid.draw(g0)
-      if (GraToFich == "S") {dev.off()}
-      ###---------------------------------###
-      ##  006.2 - RADAR POR CALIFICACIONES ##
-      ###---------------------------------###    
-      if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006.2-",df_cursos$id[i],".jpg",sep=""),width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100)}
-      grid.draw(tableGrob(t(df_chart[])))
-      if (GraToFich == "S") {dev.off()}
-    }
     
     
       ###------------------------###
