@@ -9,7 +9,7 @@ library(dplyr)
 my_id <- "115311684" #backup
 #my_id <- "83251795"
 id.cv <- "19-107910"
-df <- read.csv ("../Data/19-107910 Registros.csv",header=T,sep=";")
+df_log <- read.csv ("../Data/19-107910 Registros.csv",header=T,sep=";")
 df_log <- df_log[df_log$origen == "web",]
 df_log$idCV <- sapply(strsplit(as.character(df_log$descripcion),split="The user with id '",fixed=T),"[",2)
 df_log$idCV <- sapply(strsplit(as.character(df_log$idCV),split="'",fixed=T),"[",1)
@@ -17,7 +17,7 @@ df_log$idCV <- sapply(strsplit(as.character(df_log$idCV),split="'",fixed=T),"[",
 
 id.moodle <- "118059"
 start_date <- "2019-09-05"
-end_date <- "2020-09-15"
+end_date <- "2019-12-20"
 ## Calculamos las sesiones por día de todos los cursos
 cargar_sesiones_global = function (fecha_ini,fecha_fin) {
   df1 <- dim_filter("pagePath",operator = "REGEXP",expressions = "^/moodle/course/view.php")
@@ -82,13 +82,15 @@ if (file.exists(fich)) {
 }  
 accmean <- aggregate(ga_total$Sesiones, by=list(ga_total$Fecha),FUN=mean)
 colnames(accmean) <- c("Fecha", "Sesiones")
-graph <- ggplot(data=accmean, aes(x=Fecha)) +
-  geom_line(aes(y=Sesiones),color="red",linetype="dashed") +
-  geom_line(aes(y=ga_total$Sesiones[ga_total$Curso == id.moodle]),color ="black") +
-  ggtitle("Sesiones durante el curso (por Fechas)") +
-  scale_x_date(breaks = date_breaks("weeks"),labels = date_format("%d/%m/%Y")) +
-  theme(axis.text.x = element_text(angle=45))
-print (graph)
+accmean$data <- "CVirtual"
+accmean <- accmean[accmean$Fecha >= start_date & accmean$Fecha <= end_date,]
+#thePlot <- ggplot(data=accmean, aes(x=Fecha)) +
+#  geom_line(aes(y=CVirtual),color="red",linetype="dashed") +
+##  geom_line(aes(y=ga_total$Sesiones[ga_total$Curso == id.moodle]),color ="black") +
+#  ggtitle("Media de Sesiones por espacio durante el curso") +
+#  scale_x_date(breaks = date_breaks("2 weeks"),labels = date_format("%d/%m/%Y")) +
+#  theme(axis.text.x = element_text(angle=45))
+#print(thePlot)
 save(ga_total,file=fich)
 
 #######################################
@@ -132,7 +134,7 @@ cargar_sesiones_curso = function (curso,fecha_ini,fecha_fin) {
 ##  df <- df[df$Curso != "/moodle/course/view.php",]
   return (df)
 }
-curso_file <- paste("./Data/GA_Sesiones_",id.cv,".RData",sep="")
+curso_file <- paste("../Data/GA_Sesiones_",id.cv,".RData",sep="")
 if (file.exists(curso_file)) { 
   load("./Data/GA_Sesiones.Rdata",verbose=F)
   if (start_date < min(ga_data$Fecha)) {
@@ -146,9 +148,24 @@ if (file.exists(curso_file)) {
 } else { 
   ga_data <- cargar_sesiones_curso(id.moodle,start_date,end_date)
 } 
-save(ga_data,file=curso_file)
 
 accFecha <- aggregate(sessions ~ dia, data=ga_data,sum)
+accFecha <- accFecha[accFecha$dia >= start_date & accFecha$dia <= end_date,]
+colnames(accFecha) <- c("Fecha","Sesiones")
+accFecha$data <- id.cv
+accTotal <- rbind.data.frame(accmean,accFecha)
+#accTotal <- merge (accmean,accFecha, by="Fecha")
+thePlot <- ggplot(data=accTotal, aes(x=Fecha,y=Sesiones)) +
+  geom_line(aes(colour=data),size=2) +
+  geom_point(colour="black",size=3) +
+#  geom_line(aes(y=Sesiones),color="red",linetype="dashed") +
+#  geom_line(aes(y=Curso),color="blue",linetype="solid") + 
+  ggtitle("Media de Sesiones por espacio durante el curso") +
+  scale_x_date(breaks = date_breaks("2 weeks"),labels = date_format("%d/%m/%Y")) +
+  theme(axis.text.x = element_text(angle=45))
+print(thePlot)
+save(ga_data,file=curso_file)
+
 library(caRtociudad)
 library(ggmap)
 #casa <- cartociudad_geocode("calle Valle del Tiétar, Villanueva de la Cañada, madrid")
