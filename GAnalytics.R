@@ -1,7 +1,10 @@
 library(googleAnalyticsR)   # Conexisón con Google Analytics
+library(gridExtra)
+library(cowplot)
 library(ggplot2)            # Libreria de Gráficos
 library(scales)             # Libreria para cambiar escaas en los gráficos
 library(dplyr)              
+
 #ga_auth()
 #my_accounts <- ga_account_list()
 
@@ -136,14 +139,14 @@ cargar_sesiones_curso = function (curso,fecha_ini,fecha_fin) {
 }
 curso_file <- paste("../Data/GA_Sesiones_",id.cv,".RData",sep="")
 if (file.exists(curso_file)) { 
-  load("./Data/GA_Sesiones.Rdata",verbose=F)
-  if (start_date < min(ga_data$Fecha)) {
-    df_temp <- cargar_sesiones_curso(id.moodle,start_date,min(ga_data$Fecha)-1)
+  load(curso_file,verbose=F)
+  if (start_date < min(ga_data$fecha)) {
+    df_temp <- cargar_sesiones_curso(id.moodle,start_date,min(ga_data$fecha)-1)
     ga_data <- ga_data %>% add_row(df_temp)
   }
-  if (end_date > max(ga_total$Fecha)) {
-    df_temp <- cargar_sesiones_curso(id.moodle,max(ga_data$Fecha)+1,end_date)
-    ga_data <- ga_total %>% add_row(df_temp)
+  if (end_date > max(ga_total$fecha)) {
+    df_temp <- cargar_sesiones_curso(id.moodle,max(ga_data$fecha)+1,end_date)
+    ga_data <- ga_data %>% add_row(df_temp)
   }
 } else { 
   ga_data <- cargar_sesiones_curso(id.moodle,start_date,end_date)
@@ -170,16 +173,25 @@ library(caRtociudad)
 library(ggmap)
 #casa <- cartociudad_geocode("calle Valle del Tiétar, Villanueva de la Cañada, madrid")
 #casa <- cartociudad_geocode("calle Sancho Garcia,Sepulveda, Segovia")
-casa <- cartociudad_geocode("Avenida Senenca 2, madrid")
+#casa <- cartociudad_geocode("Avenida Senenca 2, madrid")
 casa <- cartociudad_geocode("Puerta del Sol, Madrid")
+#casa <- cartociudad_geocode("Carrion de los condes, Madrid")
 mapa_casa <- cartociudad_get_map(c(casa$lat,casa$lng),
-                                 1200,
+                                 1200,   # 100-Madrid, 1200-España, 5000-Europa
                                  add.postcode.area = T,
                                  add.cadastral.layer = F,
                                  add.censal.section = F)
-ggmap(mapa_casa) + geom_point(aes(x = as.numeric(longitude), y = as.numeric(latitude)), data = ga_data)
-accMuni <- aggregate(sessions ~ Country + Region + City, data=ga_data,FUN=sum)
-
+#ggmap(mapa_casa) + geom_point(aes(x = as.numeric(longitude), y = as.numeric(latitude)), size=5, data = ga_data)
+#accMuni <- aggregate(sessions ~ Country + Region + City, data=ga_data,FUN=sum)
+accMuni <- aggregate(sessions ~ latitude + longitude + Country + Region + City, data=ga_data,FUN=sum)
+accMuni <- accMuni[order(-accMuni$sessions),]
+#library(data.table)
+#setDT(accMuni)[setDT(accMuni), (City) := mget(Region, on = "(not set)"]
+#accMuni$City <- accMuni[accMuni$City == "(not set)","Region"]
+accMuni2 <- accMuni[-1,]
+thePlot <- ggmap(mapa_casa) + geom_point(aes(x = as.numeric(longitude), y = as.numeric(latitude)), 
+                                         size=2, data = accMuni2)
+h <- grid.arrange(ggdraw(thePlot),tableGrob(accMuni[1:20,-(1:4)],rows=NULL),nrow=1) 
 
 
 library(RgoogleMaps)
@@ -189,7 +201,7 @@ counts <- as.data.frame(table(ga_data$Country,ga_data$Region,ga_data$City))
 counts <- counts[counts$Visitas > 0,]
 colnames(counts) <- c("Pais","Comunidad","Ciudad","Visitas")
 
-ga_data$dia <- as.Date(ga_data$Fecha,format="%Y-%m-%d")
+  ga_data$dia <- as.Date(ga_data$Fecha,format="%Y-%m-%d")
 
 accFecha <- as.data.frame(table(ga_data$Dia))
 sum(accFecha$Freq)
@@ -247,3 +259,4 @@ ucm  <- geocode('Avenida Complutense, Madrid, España',
                   source = "google")
 madrid <- get_googlemap("Madrid, Spain", zoom = 8, maptype = "terrain")
 ggmap (Madrid)
+

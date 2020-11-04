@@ -1,4 +1,11 @@
     ###################################################
+    # Ubicacion de archivos
+    #   Home:     C:\
+    #   Index :   C:\R\PIMCD\git\Data
+    #   Fuentes:  C:\R\PIMCD\git\Organografía6.R
+    #   Datos:    C:\R\PIMCD\Data
+    #   Imagenes: C:\R\PIMCD\Datos\imagennes
+    #   RData:    C:\R\PIMCD\git\Data
     # Cosas a hacer:
     #   - Asignatura de Yolanda. Ok
     #   - Estadisticas por estudios. Ok
@@ -16,7 +23,6 @@
     library (RMariaDB)
     library (gridExtra)       ## Libreria Complementaria para ggplot
     library(dplyr)
-    library(scales)
     library(reshape2)
     library(data.table)
     library(cowplot)
@@ -71,7 +77,7 @@
     CursosCV <- 11100         # Cursos Virtualizados en 2017/18
     GraToFich <- "S"          # Destino de los Gráficos
     GraOpt <- ",width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100"
-    myXML <- "./Data/index_Pilar1920.xml"
+    myXML <- "./Data/index_PilarXX.xml"
     lang <- "Esp"
     ###     #########     #
     ###   ##         ##   #
@@ -160,6 +166,7 @@
       accDia_CV <- read.csv("./Data/AccDiaCV.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
       colnames(accDia_CV) <- c("Fecha","VisitasCV")
       accDia_CV$Fecha <- as.Date(as.character(accDia_CV$Fecha),format="%Y%m%d")
+      accDia_CV$DiaSem <- as.POSIXlt(accDia_CV$Fecha)$wday # Dia de la semana. De 0 a 6 (Domingo, lunes ... Sábado)
     }
     if (file.exists("./Data/AccHoraCV.csv")) {
       accHora_CV <- read.csv("./Data/AccHoraCV.csv",fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)
@@ -363,7 +370,7 @@
       ### Archivo de Calificaciones (Moodle)
       if (file.exists(as.vector(df_cursos$studentsfile[i]))) {  
         df_nota    <- read.csv(as.vector(df_cursos$gradesfile[i]),fileEncoding="utf-8",check.names=FALSE,header=T,sep=";",stringsAsFactors=FALSE)      # Calificaciones de los alumnos
-        if (ncol(df_nota) < 6) {read.csv(as.vector(df_cursos$gradesfile[i]),fileEncoding="utf-8",check.names=FALSE,header=T,sep=",",stringsAsFactors=FALSE)} 
+        if (ncol(df_nota) < 6) {df_nota <- read.csv(as.vector(df_cursos$gradesfile[i]),fileEncoding="utf-8",check.names=FALSE,header=T,sep=",",stringsAsFactors=FALSE)} 
         colnames(df_nota)[1:6] <- c("Nombre","Apellido(s)","[[id]]","Id. UsuarioUCM.","NIF","Dirección de correo")
         df_nota$NombreEntero <- paste(df_nota$Nombre,df_nota$`Apellido(s)`,sep=" ")
         #quitamos la letra del NIF
@@ -406,7 +413,7 @@
       df_alum$Final_T <- as.numeric(as.character(df_alum$Final_T))
       if (file.exists(as.vector(df_cursos$logfile[i])) ) {
         df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ";",stringsAsFactors=FALSE)                         # Log de accesos al Campus Virtual - Histórico
-        if (ncol(df_log) < 6) {read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ",",stringsAsFactors=FALSE)}
+        if (ncol(df_log) < 6) {df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ",",stringsAsFactors=FALSE)}
         switch (as.character(df_cursos$logvers[i]),
                 "2.6" = {
                   df_log       <- df_log[as.character(df_log$idEspacioCV) == as.character(df_cursos$id[i]),]  
@@ -506,6 +513,8 @@
       
       rm(df_log,df_nota,df_nota1,df_notax,df_alum,df_recurso,df_accFecha)
     }
+    df_logs <- df_logs[!is.na(df_logs$Fecha),]
+    df_accFechas <- df_accFechas[!is.na(df_accFechas$Fecha),]
     #########################################################  
     ## Accesos a MYSQL para conocer accesos por Titulación ##
     #########################################################
@@ -589,7 +598,7 @@
     for (i in 1:NumCursos) {
       df_alum <- df_alums[df_alums$Curso == i,]
       df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ";",stringsAsFactors=FALSE)                         # Log de accesos al Campus Virtual - Histórico
-      if (ncol(df_log) < 6) {read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ",",stringsAsFactors=FALSE)}
+      if (ncol(df_log) < 6) {df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ",",stringsAsFactors=FALSE)}
       df_log$fecha <- as.POSIXct(strptime(df_log$Hora,"%d/%m/%Y %H:%M"))
       df_log$idCV <- sapply(strsplit(as.character(df_log$Descripción),split="The user with id '",fixed=T),"[",2)
       df_log$idCV <- sapply(strsplit(as.character(df_log$idCV),split="'",fixed=T),"[",1)
@@ -731,7 +740,7 @@
         colnames(df_alum)[ini] <- as.character(df_grade$Nombre[1])
         colnames(df_alum)[fin] <- as.character(df_grade$Nombre[2])
         pairs(main=paste(df_cursos$title[i]," (",df_cursos$id[i],")",sep=""),
-              df_alum[,c(ini:fin)], col = ifelse(df_alum$Sexo == "V", "blue","red"), 
+              df_alum[,c(ini:fin)], na.action=na.omit,col = ifelse(df_alum$Sexo == "V", "blue","red"), 
               pch =15)
         #    legend("topleft", border="black", fill = c("blue","gold"), legend = c("V","M"))
         if (GraToFich == "S") {dev.off()}
@@ -936,7 +945,7 @@
     library (fmsb)
     library(ggiraph)
     library(ggiraphExtra)
-    require("ggpubr")
+    library(ggpubr)
     for (i in 1:NumCursos) {
       df_grade <- df_grades[df_grades$Curso==i,] 
       df_alum <- df_alums[df_alums$Curso == i & !is.na(df_alums$Final_T),]
@@ -1015,6 +1024,7 @@
       ## 006-I - ANALISIS INVERSO ##
       ###------------------------###
 ### Tabla con grafico en https://stackoverflow.com/questions/12318120/adding-table-within-the-plotting-region-of-a-ggplot-in-r
+    library(ggplotify)
     for (i in 1:NumCursos) {
       df_ingrade <- df_ingrades[df_ingrades$Curso == i,]
       df_grade <- df_grades[df_grades$Curso == i,]
@@ -1103,7 +1113,6 @@
           if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/006-I-",df_cursos$id[i],"-",grupo,".jpg",sep=""),
                                       width = 1240, height = 780, units = 'px',
                                       pointsize = 12,quality = 100)}
-          library(ggplotify)
           if (ncol(df_chart) > 3) {
             thePlot <- as.ggplot(~radarchart(df_chart[,-1], axistype=2, maxmin=T, pcol=colors_border, pfcol=colors_in, 
                        plwd=4 , plty=1,cglcol="black", cglty=1, axislabcol="black", cglwd=0.8, seg=10,title=tit)) 
@@ -1282,8 +1291,8 @@
       ###----------------------------------###
       ## 016 - ACCESOS POR DIA DE LA SEMANA ##
       ###----------------------------------###
-      dayweek_esp <- c("lun","mar","mié","jue","vie","sáb","dom")
-      dayweek_eng <- c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
+      dayweek_esp <- c("dom","lun","mar","mié","jue","vie","sáb")
+      dayweek_eng <- c("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
       acc_diasem = matrix(nrow=3,ncol=7)
       acc_hora = matrix(nrow=3,ncol=24)
       if (lang == "Esp") {dayweek <- dayweek_esp} else {dayweek <- dayweek_eng}
@@ -1297,18 +1306,24 @@
         df_accFecha <- df_accFechas[df_accFechas$Curso == i & df_accFechas$Fecha >= as.Date(df_cursos$fecini[i]) & 
                                       df_accFechas$Fecha <= as.Date(df_cursos$fecfin[i]),]
         accDia_CV_aux <- accDia_CV[accDia_CV$Fecha >= as.Date(df_cursos$fecini[i]) & accDia_CV$Fecha <= as.Date(df_cursos$fecfin[i]),]
+        df_log$HoraDia <- as.numeric(strftime(as.POSIXct(df_log$Fecha,format="%d/%m/%Y %H:%M"),format="%H"))
+        df_log$DiaSem <- as.POSIXlt(df_log$Fecha)$wday # Dia de la semana. De 0 a 6 (Domingo, lunes ... Sábado)
+        df_accFecha$DiaSem <- as.POSIXlt(df_accFecha$Fecha)$wday # Dia de la semana. De 0 a 6 (Domingo, lunes ... Sábado)
+#        df_log$DiaSem  <- strftime(as.POSIXct(df_log$Fecha,format="%d/%m/%Y %H:%M"),format="%A")
         for (j in c(1:7)) {
-          acc_diasem[1,j] <- round(NROW(df_log[weekdays(as.Date(df_log$Fecha),abbreviate=T) == substr(dayweek[j],1,3),]) / num_weeks,digits=2)
+          acc_diasem[1,j] <- round(NROW(df_log[df_log$DiaSem == j-1,]) / num_weeks,digits=2)
       #    acc_diasem[2,j] <- round(sum(accDia_Centro_aux$Contador[format(accDia_Centro$Fecha,format="%a") == dayweek[j]],na.rm=T) / num_weeks,digits=2)
           if  (NROW(df_ContEspaciosEstudios) > 0) {          
             NumEspaciosCentro <- as.numeric(as.character(df_ContEspaciosEstudios$numEspacios[df_ContEspaciosEstudios$estudios == df_cursos$degree[i] &
                                                                                                df_ContEspaciosEstudios$anoaca == substr(df_cursos$anoaca[i],3,7)]))
-            acc_diasem[2,j] <- round(sum(as.integer(df_accFecha$Visitas[format(df_accFecha$Fecha,format="%a") == substr(dayweek[j],1,3)]),na.rm=T) / num_weeks / NumEspaciosCentro,digits=2)
+            acc_diasem[2,j] <- round(sum(as.numeric(df_accFecha$Visitas[as.POSIXlt(df_accFecha$Fecha)$wday == j-1])) /num_weeks / NumEspaciosCentro,digits=2) 
+#            acc_diasem[2,j] <- round(sum(as.integer(df_accFecha$Visitas[format(df_accFecha$Fecha,format="%a") == substr(dayweek[j],1,3)]),na.rm=T) / num_weeks / NumEspaciosCentro,digits=2)
           } else {
             NumEspaciosCentro = 0
             acc_diasem[2,j] = 0
           }
-          acc_diasem[3,j] <- round(sum(accDia_CV_aux$VisitasCV[format(accDia_CV_aux$Fecha,format="%a") == substr(dayweek[j],1,3)]) / num_weeks / CursosCV,digits=2)
+          acc_diasem[3,j] <- round(sum(as.numeric(accDia_CV_aux$VisitasCV[as.POSIXlt(accDia_CV_aux$Fecha)$wday == j-1])) / num_weeks / CursosCV,digits=2)
+#          acc_diasem[3,j] <- round(sum(accDia_CV_aux$VisitasCV[format(accDia_CV_aux$Fecha,format="%a") == substr(dayweek[j],1,3)]) / num_weeks / CursosCV,digits=2)
         }
       #  accDia_Centro <- df_logCentro %>%
       #    select(count(*) as Visitas,df_logCentro[format(df_logCentro$Fecha,format="%H")]) %>%
@@ -1319,10 +1334,13 @@
         df_logHora_Centro <- df_logCentro[df_logCentro$CodPlanEst == df_cursos$degree[i] & df_logCentro$cursoAcademico == substr(df_cursos$anoaca[i],3,7) &
                                             df_logCentro$Módulo == "core" & df_logCentro$Acción == "viewed",]
         df_logHora_Centro <- unique(df_logHora_Centro)
+        df_logHora_Centro$DiaSem <- as.numeric(strftime(as.POSIXct(df_logHora_Centro$Fecha,format="%d/%m/%Y %H:%M"),format="%H"))
+#        Tot_AccHoras <- table(strftime(as.POSIXct(df_log$Fecha,format="%d/%m/%Y %H:%M"),format="%H"))
         for (j in c(1:24)) {
-          acc_hora[1,j] <- round(NROW(df_log[strftime(as.POSIXct(df_log$Fecha,format="%d/%m/%Y %H:%M"),format="%H") == j-1,]) / num_dias,digits=2)
+          acc_hora[1,j] <- round(NROW(df_log[df_log$HoraDia == j-1,]) / num_dias , digits=2)
+#          acc_hora[1,j] <- round(Tot_AccHoras[[j]],digits=2)
           if  (NROW(df_ContEspaciosEstudios) > 0) {  
-            acc_hora[2,j] <- round(NROW(df_logHora_Centro[strftime(as.POSIXct(df_logHora_Centro$Fecha,format="%d/%m/%Y %H:%M"),format="%H") == j-1,]) / num_dias / NumEspaciosCentro, digits=2)
+            acc_hora[2,j] <- round(NROW(df_logHora_Centro[df_logHora_Centro$DiaSem == j-1,]) / num_dias / NumEspaciosCentro, digits=2)
           }
           acc_hora[3,j] <- round((as.numeric(accHora_CV[j,2])/24)/CursosCV,digits=2)
       
