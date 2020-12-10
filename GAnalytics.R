@@ -168,7 +168,8 @@ thePlot <- ggplot(data=accTotal, aes(x=Fecha,y=Sesiones)) +
   theme(axis.text.x = element_text(angle=45))
 print(thePlot)
 save(ga_data,file=curso_file)
-
+library(devtools)
+devtools::install_github("cjgb/caRtociudad")
 library(caRtociudad)
 library(ggmap)
 #casa <- cartociudad_geocode("calle Valle del Tiétar, Villanueva de la Cañada, madrid")
