@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address SYSTEM "index.dtd">
+<cursos>
+	<curso>
+		<id>17-473738</id>
+		<anoaca>2017/18</anoaca>
+		<author>Ana</author>
+		<title>Salud Laboral</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/17-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/17-473738 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/17-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2017-09-07</fecini>
+		<fecfin>2018-01-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>Enero</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Junio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>Nota 80% examen</name>
+				<passgrade>4</passgrade>
+			</grade>
+			<grade>
+				<name>Seminarios</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>CV</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial></parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion></autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea></tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>18-473738</id>
+		<anoaca>2018/19</anoaca>
+		<author>Ana</author>
+		<title>Salud Laboral</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/18-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/18-473738 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/18-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile>../Data/18-473738 Recursos.csv</resourcesfile>
+		<fecini>2018-09-03</fecini>
+		<fecfin>2019-01-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>Enero</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Junio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>peso del examen 80</name>
+				<passgrade>4</passgrade>
+			</grade>
+			<grade>
+				<name>CV TRABAJOS</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>SEMINARIOS</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2018-10-09</parcial>
+			<parcial>2018-12-20</parcial>
+			<parcial>2019-01-14</parcial>
+			<parcial>2019-01-31</parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion>2018-09-11</autoevaluacion>
+			<autoevaluacion>2018-09-18</autoevaluacion>
+			<autoevaluacion>2018-09-25</autoevaluacion>
+			<autoevaluacion>2018-10-02</autoevaluacion>
+			<autoevaluacion>2018-10-16</autoevaluacion>
+			<autoevaluacion>2018-10-23</autoevaluacion>
+			<autoevaluacion>2018-10-30</autoevaluacion>
+			<autoevaluacion>2018-11-06</autoevaluacion>
+			<autoevaluacion>2018-11-18</autoevaluacion>
+			<autoevaluacion>2018-11-20</autoevaluacion>
+			<autoevaluacion>2018-11-27</autoevaluacion>
+			<autoevaluacion>2018-12-04</autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2018-10-31</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Enero</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Junio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>19-473738</id>
+		<anoaca>2019/20</anoaca>
+		<author>Ana Álvarez</author>
+		<title>Salud Laboral</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url>https://cv4.ucm.es/moodle/course/view.php?id=123053</url>
+		<logfile>../Data/19-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/19-473738 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/19-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2019-09-07</fecini>
+		<fecfin>2019-12-20</fecfin>
+		<grades>
+			<main_grade>
+				<name>ACTA</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>test acertadas 0-10</name>
+				<passgrade>6</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial></parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion></autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2019-12-20</tarea>
+			<tarea>2019-10-30</tarea>
+			<tarea>2019-12-17</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>ACTA</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-10</ingrade>
+				<cod_split>Entre 0 y 5,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>23.99</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-10</ingrade>
+				<cod_split>Entre 6 y 7,49</cod_split>
+				<min_split>6</min_split>
+				<max_split>7.49</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-10</ingrade>
+				<cod_split>Entre 7,5 y 8,49</cod_split>
+				<min_split>6.5</min_split>
+				<max_split>8,49</max_split>
+			</group>
+			<group>
+				<ingrade>test acertadas 0-10</ingrade>
+				<cod_split>Más de 8,5</cod_split>
+				<min_split>8,5</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>19-171902</id>
+		<anoaca>2019/20</anoaca>
+		<author>Ana Álvarez</author>
+		<title>PATOLOGÍA MÉDICA II</title>
+		<degree>0844</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/19-171902 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/19-171902 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/19-171902 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2020-03-12</fecini>
+		<fecfin>2020-06-19</fecfin>
+		<grades>
+			<main_grade>
+				<name>Nota Final</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Tareas-30</name>
+				<passgrade>1.5</passgrade>
+			</grade>
+			<grade>
+				<name>Test-70</name>
+				<passgrade>3.5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2020-05-21</parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion></autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2019-12-20</tarea>
+			<tarea>2019-10-30</tarea>
+			<tarea>2019-12-17</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Tareas-30</ingrade>
+				<cod_split>Entre 0 y 1,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>1.49</max_split>
+			</group>
+			<group>
+				<ingrade>Tareas-30</ingrade>
+				<cod_split>Entre 1.5 y 1,99</cod_split>
+				<min_split>1.5</min_split>
+				<max_split>1.99</max_split>
+			</group>
+			<group>
+				<ingrade>Tareas-30</ingrade>
+				<cod_split>Entre 2 y 2,49</cod_split>
+				<min_split>2</min_split>
+				<max_split>2.49</max_split>
+			</group>
+			<group>
+				<ingrade>Tareas-30</ingrade>
+				<cod_split>Más de 2,49</cod_split>
+				<min_split>2.5</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Test-70</ingrade>
+				<cod_split>Entre 0 y 3,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>3.49</max_split>
+			</group>
+			<group>
+				<ingrade>Test-70</ingrade>
+				<cod_split>Entre 3,5 y 4,69</cod_split>
+				<min_split>3.5</min_split>
+				<max_split>4.69</max_split>
+			</group>
+			<group>
+				<ingrade>Test-70</ingrade>
+				<cod_split>Entre 4,7 y 5,89</cod_split>
+				<min_split>4.7</min_split>
+				<max_split>5.89</max_split>
+			</group>
+			<group>
+				<ingrade>Test-70-</ingrade>
+				<cod_split>Más de 5,9</cod_split>
+				<min_split>5.9</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+</cursos>

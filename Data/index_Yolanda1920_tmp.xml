@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address SYSTEM "index.dtd">
+<cursos>
+	<curso>
+		<id>17-171914</id>
+		<anoaca>2017/18</anoaca>
+		<author>Yolanda Fuentes Peñaranda</author>
+		<title>Ortopodología I 2017-18</title>
+		<degree></degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/17-171914 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/17-171914 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/17-171914 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2018-01-22</fecini>
+		<fecfin>2018-05-11</fecfin>
+		<grades>
+			<main_grade>
+				<name>Calificación Final</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Calificación Extraordinaria</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>Examen Final</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Examen Extraordinario</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Nota_PracticaTotal</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>T.Webmix</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>T.Diseño</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>T.Art.+Cuestionario</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>T.Siliconas</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Glosario</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Wikis</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Foros</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2018-05-21</parcial>
+			<parcial>2018-06-27</parcial>
+		</parciales>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tareas>2018-05-11</tareas>
+			<tareas>2018-03-12</tareas>
+			<tareas>2018-03-19</tareas>
+			<tareas>2018-04-06</tareas>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 0 y 1,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>2</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 2 y 2,78</cod_split>
+				<min_split>2</min_split>
+				<max_split>2.79</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 2,79 y 3,38</cod_split>
+				<min_split>2.79</min_split>
+				<max_split>3.39</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Más de 3,39</cod_split>
+				<min_split>3.39</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Entre 0 y 0,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Entre 0,5 y 0,69</cod_split>
+				<min_split>0.5</min_split>
+				<max_split>0.7</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Entre 0,7 y 0,84</cod_split>
+				<min_split>0.7</min_split>
+				<max_split>0.85</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Más de 0,84</cod_split>
+				<min_split>0.85</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Entre 0 y 0,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Entre 0,5 y 0,69</cod_split>
+				<min_split>0.5</min_split>
+				<max_split>0.7</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Entre 0,7 y 0,84</cod_split>
+				<min_split>0.7</min_split>
+				<max_split>0.85</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Más de 0,85</cod_split>
+				<min_split>0.85</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 0 y 1,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>1.5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 1,5 y 2,08</cod_split>
+				<min_split>1.5</min_split>
+				<max_split>2.09</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 2,09 y 2,56</cod_split>
+				<min_split>2.09</min_split>
+				<max_split>2.57</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Más de 2,56</cod_split>
+				<min_split>2.57</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Entre 0 y 0,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.5</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Entre 0,5 y 0,69</cod_split>
+				<min_split>0.5</min_split>
+				<max_split>0.7</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Entre 0,7 y 0,84</cod_split>
+				<min_split>0.7</min_split>
+				<max_split>0.85</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Más de 0,84</cod_split>
+				<min_split>0.85</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Entre 0 y 0,14</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.15</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Entre 0,15 y 0,20</cod_split>
+				<min_split>0.15</min_split>
+				<max_split>0.21</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Entre 0,21 y 0,25</cod_split>
+				<min_split>0.21</min_split>
+				<max_split>0.26</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Más de 0,25</cod_split>
+				<min_split>0.26</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>19-107910</id>
+		<anoaca>2019/20</anoaca>
+		<author>Yolanda Fuentes Peñaranda</author>
+		<title>Evidencias MUICS</title>
+		<degree></degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/19-107910 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/19-107910 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/19-107910 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2019-09-09</fecini>
+		<fecfin>2019-12-20</fecfin>
+		<grades>
+			<main_grade>
+				<name>Nota_Final</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Total_Actividades</name>
+				<passgrade>2</passgrade>
+			</grade>
+			<grade>
+				<name>Total_P.Activa</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>Total_Asistencia</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>Total_Proyectos</name>
+				<passgrade>2</passgrade>
+			</grade>
+			<grade>
+				<name>Examen_Final</name>
+				<passgrade>0.5</passgrade>
+			</grade>
+			<grade>
+				<name>SEM_Voluntarios</name>
+				<passgrade>0.15</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2020-01-09</parcial>
+		</parciales>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tareas>2019-09-30</tareas>
+			<tareas>2019-11-25</tareas>
+			<tareas>2019-12-19</tareas>
+			<tareas>2020-01-27</tareas>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_Final</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 0 y 1,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>2</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 2 y 2,78</cod_split>
+				<min_split>2</min_split>
+				<max_split>2.79</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 2,79 y 3,38</cod_split>
+				<min_split>2.79</min_split>
+				<max_split>3.39</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Más de 3,38</cod_split>
+				<min_split>3.39</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Entre 0 y 0,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Entre 0,5 y 0,69</cod_split>
+				<min_split>0.5</min_split>
+				<max_split>0.7</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Entre 0,7 y 0,84</cod_split>
+				<min_split>0.7</min_split>
+				<max_split>0.85</max_split>
+			</group>
+			<group>
+				<ingrade>Total_P.Activa</ingrade>
+				<cod_split>Más de 0,84</cod_split>
+				<min_split>0.85</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Entre 0 y 0,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Entre 0,5 y 0,69</cod_split>
+				<min_split>0.5</min_split>
+				<max_split>0.7</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Entre 0,7 y 0,84</cod_split>
+				<min_split>0.7</min_split>
+				<max_split>0.85</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Asistencia</ingrade>
+				<cod_split>Más de 0,84</cod_split>
+				<min_split>0.85</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 0 y 1,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>1.5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 1,5 y 2,08</cod_split>
+				<min_split>1.5</min_split>
+				<max_split>2.09</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 2,09 y 2,56</cod_split>
+				<min_split>2.09</min_split>
+				<max_split>2.57</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Más de 2,56</cod_split>
+				<min_split>2.57</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Entre 0 y 0,49</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.5</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Entre 0,5 y 0,69</cod_split>
+				<min_split>0.5</min_split>
+				<max_split>0.7</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Entre 0,7 y 0,84</cod_split>
+				<min_split>0.7</min_split>
+				<max_split>0.85</max_split>
+			</group>
+			<group>
+				<ingrade>Examen_Final</ingrade>
+				<cod_split>Más de 0,84</cod_split>
+				<min_split>0.85</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Entre 0 y 0,14</cod_split>
+				<min_split>0</min_split>
+				<max_split>0.15</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Entre 0,15 y 0,20</cod_split>
+				<min_split>0.15</min_split>
+				<max_split>0.21</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Entre 0,21 y 0,25</cod_split>
+				<min_split>0.21</min_split>
+				<max_split>0.26</max_split>
+			</group>
+			<group>
+				<ingrade>SEM_Voluntarios</ingrade>
+				<cod_split>Más de 0,25</cod_split>
+				<min_split>0.26</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+</cursos>

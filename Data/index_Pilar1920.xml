@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address SYSTEM "index.dtd">
+<cursos>
+	<curso>
+		<id>17-190652</id>
+		<anoaca>2017/18</anoaca>
+		<author>Pilar Álvarez</author>
+		<title>Organografía Microscópica Humana. Grupo IA</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/17-190652 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/17-190652 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/17-190652 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2017-09-07</fecini>
+		<fecfin>2018-03-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>NOTA FINAL DE PRÁCTICAS (Real)</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Minitests (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Examen final (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Nota del cuaderno (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2018-02-22</parcial>
+			<parcial>2018-06-29</parcial>
+		</parciales>
+		<pruebas>
+			<prueba>2017-10-17</prueba>
+			<prueba>2017-11-14</prueba>
+			<prueba>2017-12-15</prueba>
+			<prueba>2018-01-23</prueba>
+		</pruebas>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2018-02-12</tarea>
+			<tarea>2018-03-13</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>seminario3262-3</id>
+		<anoaca>2017/18</anoaca>
+		<author>Pilar Álvarez</author>
+		<title>Organografía Microscópica Humana. Grupo IIA</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/seminario3262-3 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/seminario3262-3 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/seminario3262-3 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2017-09-07</fecini>
+		<fecfin>2018-03-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>Nota de prácticas</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Minitest – Bloque I</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Minitest – Bloque II</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Minitest – Total</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2017-12-05</parcial>
+			<parcial>2018-03-02</parcial>
+			<parcial>2018-03-15</parcial>
+		</parciales>
+		<pruebas>
+			<prueba>2017-09-22</prueba>
+			<prueba>2017-09-28</prueba>
+			<prueba>2017-10-05</prueba>
+			<prueba>2017-10-11</prueba>
+			<prueba>2017-10-19</prueba>
+			<prueba>2017-11-02</prueba>
+			<prueba>2017-11-16</prueba>
+			<prueba>2017-12-19</prueba>
+			<prueba>2018-01-15</prueba>
+			<prueba>2018-01-19</prueba>
+			<prueba>2018-01-25</prueba>
+			<prueba>2018-02-09</prueba>
+			<prueba>2018-02-26</prueba>
+		</pruebas>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2017-09-18</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Minitest – Total</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Minitest – Total</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Minitest – Total</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Minitest – Total</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>seminario-invest-5914-19</id>
+		<anoaca>2018/19</anoaca>
+		<author>Pilar Álvarez</author>
+		<title>seminario organo IA</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/seminario-invest-5914-19 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/seminario-invest-5914-19 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/seminario-invest-5914-19 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2018-09-19</fecini>
+		<fecfin>2019-03-31</fecfin>
+		<grades>
+			<main_grade>
+				<name>NOTA FINAL DE PRACTICAS (Real)</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Minitests (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Examen final (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Nota del cuaderno (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2019-03-06</parcial>
+			<parcial>2019-07-01</parcial>
+		</parciales>
+		<pruebas>
+			<prueba>2018-10-16</prueba>
+			<prueba>2018-11-13</prueba>
+			<prueba>2018-12-20</prueba>
+			<prueba>2019-02-11</prueba>
+		</pruebas>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2019-02-21</tarea>
+			<tarea>2019-03-22</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>NOTA FINAL DE PRACTICAS (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRACTICAS (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRACTICAS (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRACTICAS (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>18-93062</id>
+		<anoaca>2018/19</anoaca>
+		<author>Pilar Álvarez</author>
+		<title>Organografía Microscópica Humana. Grupo IA</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url></url>
+		<logfile>../Data/18-93062 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/18-93062 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/18-93062 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2018-09-06</fecini>
+		<fecfin>2019-07-05</fecfin>
+		<grades>
+			<main_grade>
+				<name>Actas Junio</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Actas Julio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>parcial 1</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>parcial 2</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>parcial 3</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>parcial 4</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>parcial 5</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Nota_final teórica JUNIO</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Nota_final teórica JULIO</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Nota_final teoría</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Junio por Parciales</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Junio por Examen</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2018-10-01</parcial>
+			<parcial>2018-10-29</parcial>
+			<parcial>2018-12-03</parcial>
+			<parcial>2019-01-28</parcial>
+			<parcial>2019-03-18</parcial>
+			<parcial>2019-06-03</parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion>2018-09-19</autoevaluacion>
+			<autoevaluacion>2018-09-24</autoevaluacion>
+			<autoevaluacion>2018-09-26</autoevaluacion>
+			<autoevaluacion>2018-10-10</autoevaluacion>
+			<autoevaluacion>2018-10-17</autoevaluacion>
+			<autoevaluacion>2018-10-22</autoevaluacion>
+			<autoevaluacion>2018-11-07</autoevaluacion>
+			<autoevaluacion>2018-11-14</autoevaluacion>
+			<autoevaluacion>2018-11-21</autoevaluacion>
+			<autoevaluacion>2018-11-26</autoevaluacion>
+			<autoevaluacion>2019-01-09</autoevaluacion>
+			<autoevaluacion>2019-01-16</autoevaluacion>
+			<autoevaluacion>2019-01-21</autoevaluacion>
+			<autoevaluacion>2019-02-20</autoevaluacion>
+			<autoevaluacion>2019-02-27</autoevaluacion>
+			<autoevaluacion>2019-02-28</autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2019-02-21</tarea>
+			<tarea>2019-03-22</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Actas Junio</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Junio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Junio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Junio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Julio</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Julio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Julio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Actas Julio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Parciales</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Parciales</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Parciales</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Parciales</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Examen</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Examen</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Examen</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Junio por Examen</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JUNIO</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JUNIO</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JUNIO</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JUNIO</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JULIO</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JULIO</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JULIO</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Nota_final teórica JULIO</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>seminario-invest-5914-21</id>
+		<anoaca>2019/20</anoaca>
+		<author>Pilar Álvarez vázquez</author>
+		<title>Organografía microscópica humana,  OMH</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url>137818</url>
+		<logfile>../Data/seminario-invest-5914-21 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/seminario-invest-5914-21 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/seminario-invest-5914-21 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2019-09-05</fecini>
+		<fecfin>2020-03-20</fecfin>
+		<grades>
+			<main_grade>
+				<name>Actas Junio</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Actas Julio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>Minitests</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Examen final</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>NOTA FINAL DE PRÁCTICAS (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2020-02-20</parcial>
+		</parciales>
+		<pruebas>
+			<prueba>2019-10-14</prueba>
+			<prueba>2019-11-07</prueba>
+			<prueba>2019-12-11</prueba>
+			<prueba>2020-01-15</prueba>
+		</pruebas>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2020-01-22</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Minitests</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Minitests</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE PRÁCTICAS (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>19-93062</id>
+		<anoaca>2019/20</anoaca>
+		<author>Pilar Álvarez vázquez</author>
+		<title>Organografía 19/20 IA, OMH</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url>https://cv4.ucm.es/moodle/course/view.php?id=117515</url>
+		<logfile>../Data/19-93062 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/19-93062 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/19-93062 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2019-09-05</fecini>
+		<fecfin>2020-09-15</fecfin>
+		<grades>
+			<main_grade>
+				<name>nota teórica de Junio por parciales</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>nota teórica de Junio por examen final</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+			<grade>
+				<name>nota actas Junio</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2019-09-30</parcial>
+			<parcial>2019-10-28</parcial>
+			<parcial>2019-12-02</parcial>
+			<parcial>2020-01-27</parcial>
+
+		</parciales>
+		<pruebas>
+			<pruebas>2020-02-20</pruebas>
+		</pruebas>
+		<autoevaluaciones>
+			<autoevaluacion>2019-09-16</autoevaluacion>
+			<autoevaluacion>2019-09-23</autoevaluacion>
+			<autoevaluacion>2019-10-07</autoevaluacion>
+			<autoevaluacion>2019-10-14</autoevaluacion>
+			<autoevaluacion>2019-10-22</autoevaluacion>
+			<autoevaluacion>2019-11-04</autoevaluacion>
+			<autoevaluacion>2019-11-13</autoevaluacion>
+			<autoevaluacion>2019-11-18</autoevaluacion>
+			<autoevaluacion>2020-01-08</autoevaluacion>
+			<autoevaluacion>2020-01-13</autoevaluacion>
+			<autoevaluacion>2020-01-20</autoevaluacion>
+			<autoevaluacion>2020-02-17</autoevaluacion>
+			<autoevaluacion>2020-02-24</autoevaluacion>						
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea>2020-01-14</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>nota teórica de Junio por parciales</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por parciales</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por parciales</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por parciales</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por examen final</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por examen final</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por examen final</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>nota teórica de Junio por examen final</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>nota actas Junio</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>nota actas Junio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>nota actas Junio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>nota actas Junio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+	<curso>
+		<id>seminario-invest-5914-24</id>
+		<anoaca>2020/21</anoaca>
+		<author>Pilar Álvarez vázquez</author>
+		<title>Prácticas de Biología Celular e Histología</title>
+		<degree>0805</degree>
+		<college>126</college>
+		<url>137818</url>
+		<logfile>../Data/seminario-invest-5914-24 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/seminario-invest-5914-24 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/seminario-invest-5914-24 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2020-09-21</fecini>
+		<fecfin>2021-02-05</fecfin>
+		<grades>
+			<main_grade>
+				<name>NOTA ACTAS FEBRERO</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Nota de prácticas</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2020-01-11</parcial>
+		</parciales>
+		<pruebas>
+		</pruebas>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Examen final</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Nota de prácticas</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+
+		</groups>
+	</curso>
+</cursos>

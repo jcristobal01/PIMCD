@@ -78,7 +78,7 @@
       GraToFich <- "S"          # Destino de los Gráficos
       GraOpt <- ",width = 1240, height = 780, units = 'px', pointsize = 12,quality = 100"
   #    myXML <- "./Data/index_PilarXX.xml"
-      myXML <- "./Data/index_Ana1920.xml"
+      myXML <- "./Data/index_Teresa1920.xml"
       lang <- "Esp"
       ###     #########     #
       ###   ##         ##   #
@@ -148,6 +148,7 @@
       }
       colnames(df_grades) <- c("Nombre","Passgrade","Curso")
       df_grades<- df_grades[!is.na(df_grades$Nombre),]
+      df_grades<- df_grades[!(df_grades$Nombre == "FALSE"),]
       #df_grades<-xmlToDataFrame(nodes = getNodeSet(data,list_grades),homogeneous = T)
       list_groups <- c("//cursos/curso/groups/group",
                        "//cursos/curso/groups/group/grade",
@@ -258,6 +259,12 @@
                           function (y) list(Contador = as.numeric(length(y$IdCV))),simplify=FALSE)
                  dd <- cbind(unique(df_view["IdCV"]), do.call(rbind,cc ))
                  },
+               NombreEntero = {
+                 df_view <- df_view[order(df_view$NombreEntero),]
+                 cc <- by(df_view,df_view["NombreEntero"], 
+                          function (y) list(Contador = as.numeric(length(y$NombreEntero))),simplify=FALSE)
+                 dd <- cbind(unique(df_view["NombreEntero"]), do.call(rbind,cc ))
+               },
                Fechas = {
                  if (curso != 0) {
                    df_view$Fecha <- as.Date(substr(df_view$Fecha,1,10),"%d/%m/%Y")
@@ -447,8 +454,8 @@
                                         df_log$Fecha <= as.POSIXct(strptime(df_cursos$fecfin[i],"%Y-%m-%d"))),]
                     Contabiliza_Acciones(df_log,as.character(df_cursos$id[i]))
                     df_view <- subset(df_log,  Módulo == "Sistema" & Acción == "Curso visto")
-                    df_view <- df_view[order(df_view$Nombre),]
-                    df_view <- df_view[!duplicated(df_view$Nombre),]
+                    df_view <- df_view[order(df_view$NombreEntero),]
+                    df_view <- df_view[!duplicated(df_view$NombreEntero),]
                     df_nota1 <- merge(x=df_nota,y=df_view,by="NombreEntero",all.x=TRUE)
                     df_nota1$IdCV[is.na(df_nota1$IdCV)] <- df_nota1$Id[is.na(df_nota1$IdCV)]
       
@@ -459,14 +466,14 @@
                     df_alum <- merge(df_alum,df_view,by="DNI")
                     df_alum$IdCV.x[is.na(df_alum$IdCV.x)] <- df_alum$IdCV.y[is.na(df_alum$IdCV.x)]
                     df_alum$IdCV.y <- NULL
-                    df_alum$NombreEntero <- NULL
+#                    df_alum$NombreEntero <- NULL
                     colnames(df_alum)[colnames(df_alum)=="IdCV.x"] <- "IdCV"
-                    df_log <- df_log[,c("Id","Hora","Módulo","Acción","Descripción","IP")]
+                    df_log <- df_log[,c("Id","NombreEntero","Hora","Módulo","Acción","Descripción","IP")]
                   },
                   {}
           )
         }
-        colnames(df_log) <- c("IdCV","Fecha","Módulo","Acción","Otros","Ip")
+        colnames(df_log) <- c("IdCV","NombreEntero","Fecha","Módulo","Acción","Otros","Ip")
       #  df_log <-df_log[df_log$Fecha >= df_cursos$fecini[i] & df_log$Fecha <= df_cursos$fecfin[i],]
         
         ####################################
@@ -475,16 +482,31 @@
         ## Visitas
         df_accFecha       <- data.frame(Fecha=seq(as.Date(df_cursos$fecini[i]),as.Date(df_cursos$fecfin[i]),1))
         for (Modulo in List_Modulos_Esp) {
-          df_tmp <- Contar(i,Modulo,"IdCV")
-          if (nrow(df_tmp) > 0 ) {
-            df_tmp$IdCV <- as.integer(df_tmp$IdCV)
-            df_alum <- merge(df_alum,df_tmp,by="IdCV",all.x=TRUE)
-            if (NROW(df_tmp) == 0) {df_alum <- cbind(df_alum,0)}
-            df_alum$Contador <- as.integer(df_alum$Contador)
-            df_alum$Contador[is.na(df_alum$Contador)]<-0
-          } else {
-            df_alum$Contador <- 0
-          }
+# Comentamos porque, al haber dos entornos moodle diferentes, los idCV de cada usuario son diferentes, 
+# por eso se contabilizan por nombreEntero y no por idCV
+#          df_tmp <- Contar(i,Modulo,"IdCV")
+#          if (nrow(df_tmp) > 0 ) {
+#            df_tmp$IdCV <- as.integer(df_tmp$IdCV)
+#            df_alum <- merge(df_alum,df_tmp,by="IdCV",all.x=TRUE)
+#            if (NROW(df_tmp) == 0) {df_alum <- cbind(df_alum,0)}
+#            df_alum$Contador <- as.integer(df_alum$Contador)
+#            df_alum$Contador[is.na(df_alum$Contador)]<-0
+#          } else {
+#            df_alum$Contador <- 0
+#          }
+#          if (sum(df_alum$Contador) == 0) {
+#            df_alum$Contador <- NULL
+            df_tmp <- Contar(i,Modulo,"NombreEntero")
+            if (nrow(df_tmp) > 0 ) {
+              df_alum <- merge(df_alum,df_tmp,by="NombreEntero",all.x=TRUE)
+              if (NROW(df_tmp) == 0) {df_alum <- cbind(df_alum,0)}
+              df_alum$Contador <- as.integer(df_alum$Contador)
+              df_alum$Contador[is.na(df_alum$Contador)]<-0
+            } else {
+              df_alum$Contador <- 0
+            }
+#          }
+            
           colnames(df_alum) [ncol(df_alum)] <- Modulo
        
           df_tmp <-Contar(i,Modulo,"Fechas")
@@ -536,6 +558,7 @@
             for (cursoAcademico in unique(substr(df_cursos$anoaca[df_cursos$degree == CodplanEstudios],3,7))) {
       #    CursoAcademico <- substr(j,3,7)
               anoaca <- paste(substr(cursoAcademico,1,2),substr(cursoAcademico,4,5),sep="")
+              if (anoaca == "2021") {anoaca="1920"}
               MySQLTable1 <- paste("LAPIMCD201820_",anoaca,"_",DesPlanEstudios(CodplanEstudios),sep="")
               MySQLTable2 <- paste("mdl_logstore_LAPIMCD201820_",anoaca,"_",DesPlanEstudios(CodplanEstudios),sep="")
               query<-paste("Select * from ",MySQLTable1," WHERE codigoPlan = '",CodplanEstudios,"' AND cursoAcademico = '",cursoAcademico,"';",sep="")
@@ -602,6 +625,7 @@
       ###---------------------###
       for (i in 1:NumCursos) {
         df_alum <- df_alums[df_alums$Curso == i,]
+        df_alum$nombreEntero <- paste(df_alum$Nombre,df_alum$Apellidos)
         df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ";",stringsAsFactors=FALSE)                         # Log de accesos al Campus Virtual - Histórico
         if (ncol(df_log) < 6) {df_log <- read.csv(as.vector(df_cursos$logfile[i]),fileEncoding="utf-8",check.names=FALSE,header= T,sep = ",",stringsAsFactors=FALSE)}
         df_log$fecha <- as.POSIXct(strptime(df_log$Hora,"%d/%m/%Y %H:%M"))
@@ -611,7 +635,11 @@
         df_log <- df_log[df_log$origen == "web",]
         df_log <- df_log[(df_log$fecha >= as.POSIXct(strptime(df_cursos$fecini[i],"%Y-%m-%d")) & 
                             df_log$fecha <= as.POSIXct(strptime(df_cursos$fecfin[i],"%Y-%m-%d"))),]
-        df_log <- subset(df_log, (df_log$idCV %in% df_alum$IdCV))
+        df_log1 <- subset(df_log, (df_log$idCV %in% df_alum$IdCV))
+        if (NROW(df_log1) == 0) {
+          df_log1 <- subset(df_log, (df_log$nombreEntero %in% df_alum$nombreEntero))
+        }
+        df_log <- df_log1
         resumen <- as.data.frame(table(df_log$modulo,df_log$accion))
         resumen <- resumen[!resumen$Freq == 0,]
         resumen1 <- as.data.frame(table(df_log$modulo,df_log$accion,df_log$idCV))
@@ -619,10 +647,12 @@
         resumen1 <- as.data.frame(table(resumen1$Var1,resumen1$Var2))
         resumen1 <- resumen1[!resumen1$Freq == 0,]
         resumen <- cbind(resumen,resumen1$Freq)
-        colnames(resumen) <- c("Componente","Acción","Veces","Usuarios")
-        resumen$Acción <- paste(resumen$Componente, resumen$Acción, sep = " > ")
-        resumen$Componente <- NULL
-        resumen <- resumen[order(resumen$Veces,decreasing=T),]
+        if (NROW(resumen) > 0) {
+          colnames(resumen) <- c("Componente","Acción","Veces","Usuarios")
+          resumen$Acción <- paste(resumen$Componente, resumen$Acción, sep = " > ")
+          resumen$Componente <- NULL
+          resumen <- resumen[order(resumen$Veces,decreasing=T),]
+        }
         if (GraToFich == "S") {jpeg(paste(paste("imagenes/",df_cursos$id[i],"/000.jpg",sep="")),
                                     width = 1240, height = 780, units = 'px', 
                                     pointsize = 12,quality = 100)}
@@ -732,18 +762,23 @@
         df_grade <- df_grades[df_grades$Curso==i,] 
         df_alum <- df_alums[df_alums$Curso==i,]
         if (sum(!is.na(df_alum$Main1)) > 0  & sum(!is.na(df_alum$Main2)) > 0) {
-          if (GraToFich == "S") {jpeg(paste("imagenes/",df_cursos$id[i],"/002-",df_cursos$id[i],".jpg",sep=""))}
+          if (GraToFich == "S") {
+            jpeg(paste("imagenes/",df_cursos$id[i],"/002-",df_cursos$id[i],".jpg",sep=""))
+          }
+          aaa="No HOlA"
           ini=grep("Main1",colnames(df_alum))[1]
           fin=ini+1
           colnames(df_alum)[ini] <- as.character(df_grade$Nombre[1])
           colnames(df_alum)[fin] <- as.character(df_grade$Nombre[2])
+          df_alum[ini] <- as.numeric(df_alum[[ini]])
+          df_alum[fin] <- as.numeric(df_alum[[fin]])          
           pairs(main=paste(df_cursos$title[i]," (",df_cursos$id[i],")",sep=""),
                 df_alum[,c(ini:fin)], na.action=na.omit,col = ifelse(df_alum$Sexo == "V", "blue","red"), 
                 pch =15)
           #    legend("topleft", border="black", fill = c("blue","gold"), legend = c("V","M"))
           if (GraToFich == "S") {dev.off()}
-        }
-        }
+        } 
+      }
       ###----------------------------###
       ##  003 - MATRICULADOS POR SEXO ##
       ###----------------------------###
@@ -954,7 +989,7 @@
               df_chart <- data.frame(row.names=c("Max.","Min","Nota Final=[0,5)","Nota Final=[5,8)", "Nota Final=[8,10]"))
               }
           df_chart[3,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) < 5,])
-          df_chart[4,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) > 5 & as.numeric(as.character(df_alum$Final_T)) < 8,])
+          df_chart[4,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 5 & as.numeric(as.character(df_alum$Final_T)) < 8,])
           df_chart[5,1] <-NROW(df_alum[as.numeric(as.character(df_alum$Final_T)) >= 8,])
           df_chart[1,1] <- round(max(df_chart[,1],na.rm=T),digits=0)
           df_chart[2,1] <- 0
@@ -1014,7 +1049,7 @@
           h <- grid.arrange(ggdraw(thePlot),tableGrob(df_chart[,-1]),nrow=1) 
   #        h <- ggdraw(thePlot)
   #        h + cowplot::draw_grob(ggplotGrob(stable.p), vjust=0.4,hjust=-0.25)
-          print(h)
+  #        print(h)
           if (GraToFich == "S") dev.off()
           }
         }
@@ -1417,8 +1452,9 @@
         for  (i in c(1:NumCursos)){
           df_grade <- df_grades[df_grades$Curso==i,] 
           df_alum <- df_alums[df_alums$Curso == i,]
-          df_tmp <- Contar(i,"Visitas","IdCV")
-          df_tmp$IdCV <- as.integer(df_tmp$IdCV)
+#          df_tmp <- Contar(i,"Visitas","IdCV")
+#          df_tmp <- Contar(i,"Visitas","NombreEntero")
+#          df_tmp$IdCV <- as.integer(df_tmp$IdCV)
           Col_Final <- grep("Final_T",colnames(df_alum))[1]
           rpart_arg <- paste(colnames(df_alum)[Col_Final]," ~ ",sep="")
           fich <- paste("imagenes/",df_cursos$id[i],"/019-",df_cursos$id[i],"-Final_T.jpg",sep="")
@@ -1490,6 +1526,7 @@
               sbs$Convocatoria <- factor(sbs$Convocatoria)
               sbs$Procedencia <- factor(sbs$Procedencia)
               rpart_arg <- as.formula(rpart_arg)
+              arbol <- ctree(rpart_arg, data = sbs,controls = ctree_control(minsplit = 0.1*NROW(df_alum),mincriterion = 0.001))
               arbol <- ctree(rpart_arg, data = sbs,controls = ctree_control(minsplit = 50,mincriterion = 0.001))
               arbol
               print(arbol)

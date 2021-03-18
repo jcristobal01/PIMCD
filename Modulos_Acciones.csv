@@ -1,65 +1,65 @@
-"","Modulo","Accion","19-171902"
-"2","Sistema","Curso visto",11644
-"3","Sistema","Módulo de curso actualizado",144
-"4","Sistema","Evento de calendario actualizado",52
-"5","Sistema","Sección de curso actualizado",35
-"6","Sistema","Selección de curso eliminada",11
-"7","Sistema","Módulo de curso creado",76
-"8","Sistema","Evento de calendario creado",20
-"9","Sistema","Lista de usuarios vista",95
-"10","Sistema","Categoría de preguntas creada",15
-"11","Sistema","Usuario calificado",928
-"12","Sistema","Perfil de usuario visto",68
+"","Modulo","Accion","20-171904"
+"2","Sistema","Curso visto",12906
+"3","Sistema","Perfil de usuario visto",81
+"4","Sistema","Módulo de curso actualizado",168
+"5","Sistema","Módulo de curso creado",57
+"6","Sistema","Lista de usuarios vista",90
+"7","Sistema","Sumarios de cursos vistos",1
+"8","Sistema","Actividad reciente vista",6
+"9","Sistema","Elemento de calificación actualizado",52
+"10","Sistema","Elemento de calificación creado",44
+"11","Sistema","Informe usuario del curso visto",8
+"12","Sistema","Sección de curso actualizado",13
 "13","Sistema","Lista de insignias vista",2
-"14","Sistema","Actividad reciente vista",22
-"15","Sistema","Sumarios de cursos vistos",1
-"16","Cuestionario","Página de edición del cuestionario visitada",75
-"17","Cuestionario","Intento de cuestionario visualizado",1645
-"18","Cuestionario","Vista previa del intento iniciada",10
-"19","Cuestionario","Módulo de curso visto",1304
-"20","Cuestionario","Resumen del intento de cuestionario visualizado",197
-"21","Cuestionario","Intento del cuestionario revisado",528
-"22","Cuestionario","Intento enviado",214
-"23","Cuestionario","Ha comenzado el intento",219
-"24","Cuestionario","Informe de cuestionario visto",199
-"25","Cuestionario","Pregunta calificada manualmente",360
-"26","Foro","Módulo de curso visto",503
-"27","Foro","Tema creado",51
-"28","Foro","Algún contenido ha sido publicado.",61
-"29","Foro","Tema visto",407
-"30","Foro","Mensaje actualizado",9
-"31","Foro","Informe del usuario visualizado",3
-"32","Foro","Se ha suscrito a esta discusión",2
-"33","Foro","Mensaje creado",1
-"34","Tours para usuarios","Tour terminado",1
-"35","Tours para usuarios","Paso mostrado",6
-"36","Tours para usuarios","Tour iniciado",1
-"37","Tarea","Se ha visualizado el estado de la entrega.",3099
-"38","Tarea","Visualización de las Calificaciones",214
-"39","Tarea","Formulario de calificaciones visto",1020
-"40","Tarea","Se ha calificado el envío.",403
-"41","Tarea","Retroalimentación vista",8
-"42","Tarea","Se ha enviado una entrega",534
-"43","Tarea","Formulario de entrega visto.",762
-"44","Recurso","Módulo de curso visto",4364
-"45","Carpeta","Módulo de curso visto",159
-"46","Carpeta","Directorio descargado en formato Zip",1
-"47","Carpeta","Carpeta actualizada",1
-"48","URL","Módulo de curso visto",175
-"49","Usuario","Informe de notas de usuario visto",110
-"50","Informe general","Informe de resumen de notas visto",6
-"51","Comentarios de la entrega","Comentario creado",20
-"52","Registros","Informe de registros visto",6
-"53","Registros","Informe de registros de usuario visto",8
-"54","Registros activos","Lector de registros en tiempo real visto",7
-"55","Vista Simple","Informe de calificación de vista simple visto.",1
-"56","Informe de resultados","Informe de resultados visto",1
-"57","Informe del calificador","Informe del calificador visto",8
-"58","Participación en el curso","Informe de participación visto",45
-"59","Actividad del curso","Outline report viewed",1
-"60","Actividad del curso","Informe de actividad visto",10
-"61","Collaborate","Módulo de curso visto",2
-"62","Collaborate","Collab session launched",1
-"63","Archivos enviados","Entrega creada.",487
-"64","Archivos enviados","Un fichero ha sido subido.",534
-"65","Archivos enviados","Envío actualizado.",47
+"14","Sistema","Questions exported",3
+"15","Sistema","Question category viewed",143
+"16","Sistema","Evento de calendario actualizado",36
+"17","Sistema","Question created",398
+"18","Sistema","Question updated",134
+"19","Sistema","Grupo eliminado",4
+"20","Sistema","Miembro del grupo añadido",165
+"21","Sistema","Grupo creado",8
+"22","Sistema","Miembro del grupo eliminado",17
+"23","Sistema","Agrupamiento eliminado",1
+"24","Sistema","Agrupamiento creado",1
+"25","Sistema","Evento de calendario creado",12
+"26","Sistema","Question deleted",28
+"27","Sistema","Question moved",75
+"28","Sistema","Usuario calificado",577
+"29","Sistema","Categoría de preguntas creada",12
+"30","Sistema","Questions imported",5
+"31","Sistema","Question viewed",2
+"32","Sistema","Copia de curso creada",1
+"33","Recurso","Módulo de curso visto",4504
+"34","Herramienta Externa","Módulo de curso visto",2853
+"35","URL","Módulo de curso visto",1576
+"36","Tarea","Se ha visualizado el estado de la entrega.",297
+"37","Tarea","Módulo de curso visto",491
+"38","Tarea","Visualización de las Calificaciones",44
+"39","Tarea","Se ha enviado una entrega",62
+"40","Tarea","Formulario de entrega visto.",84
+"41","Foro","Módulo de curso visto",110
+"42","Foro","Tema creado",7
+"43","Foro","Algún contenido ha sido publicado.",7
+"44","Foro","Tema visto",18
+"45","Foro","Tema borrado",1
+"46","Foro","Mensaje borrado",1
+"47","Hoja de cálculo OpenOffice","Calificación OpenDocument exportada",3
+"48","Informe del calificador","Informe del calificador visto",16
+"49","Usuario","Informe de notas de usuario visto",25
+"50","Informe general","Informe de resumen de notas visto",3
+"51","Archivos enviados","Entrega creada.",62
+"52","Archivos enviados","Un fichero ha sido subido.",62
+"53","Cuestionario","Módulo de curso visto",1403
+"54","Cuestionario","Intento del cuestionario revisado",238
+"55","Cuestionario","Página de edición del cuestionario visitada",230
+"56","Cuestionario","Intento de cuestionario visualizado",13376
+"57","Cuestionario","Ha comenzado el intento",302
+"58","Cuestionario","Informe de cuestionario visto",7
+"59","Cuestionario","Intento enviado",295
+"60","Cuestionario","Resumen del intento de cuestionario visualizado",328
+"61","Cuestionario","Pregunta calificada manualmente",1
+"62","Cuestionario","Vista previa del intento iniciada",4
+"63","Tours para usuarios","Paso mostrado",153
+"64","Tours para usuarios","Tour terminado",78
+"65","Tours para usuarios","Tour iniciado",98

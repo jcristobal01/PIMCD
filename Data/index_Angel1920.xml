@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address SYSTEM "index.dtd">
+<cursos>
+	<curso>
+		<id>19-82376</id>
+		<anoaca>2019/20</anoaca>
+		<author>Ángel López Carbonell</author>
+		<title>Biología Celular e Histología</title>
+		<degree>0822</degree>
+		<college>148</college>
+		<url></url>
+		<logfile>../Data/19-82376 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/19-82376 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/19-82376 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2019-09-10</fecini>
+		<fecfin>2020-01-16</fecfin>
+		<grades>
+			<main_grade>
+				<name>Febrero</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name>Julio</name>
+				<passgrade>5</passgrade>
+			</main_grade2>
+		</grades>
+		<parciales>
+			<parcial>2020-01-14</parcial>
+			<parcial>2020-07-02</parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion></autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tarea></tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Julio</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Julio</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Julio</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Julio</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
+</cursos>
