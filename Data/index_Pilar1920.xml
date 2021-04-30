@@ -51,6 +51,7 @@
 		<autoevaluaciones>
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 			<tarea>2018-02-12</tarea>
@@ -191,6 +192,7 @@
 		<autoevaluaciones>
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 			<tarea>2017-09-18</tarea>
@@ -296,6 +298,7 @@
 		<autoevaluaciones>
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 			<tarea>2019-02-21</tarea>
@@ -468,6 +471,7 @@
 			<autoevaluacion>2019-02-28</autoevaluacion>
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 			<tarea>2019-02-21</tarea>
@@ -669,6 +673,7 @@
 		<autoevaluaciones>
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 			<tarea>2020-01-22</tarea>
@@ -803,6 +808,7 @@
 			<autoevaluacion>2020-02-24</autoevaluacion>						
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 			<tarea>2020-01-14</tarea>
@@ -887,7 +893,7 @@
 		<anoaca>2020/21</anoaca>
 		<author>Pilar Álvarez vázquez</author>
 		<title>Prácticas de Biología Celular e Histología</title>
-		<degree>0805</degree>
+		<degree>XXXX</degree>
 		<college>126</college>
 		<url>137818</url>
 		<logfile>../Data/seminario-invest-5914-24 Registros.csv</logfile>
@@ -912,13 +918,14 @@
 			</grade>
 		</grades>
 		<parciales>
-			<parcial>2020-01-11</parcial>
+			<parcial>2021-01-22</parcial>
 		</parciales>
 		<pruebas>
 		</pruebas>
 		<autoevaluaciones>
 		</autoevaluaciones>
 		<foros>
+			<foro></foro>
 		</foros>
 		<tareas>
 		</tareas>
@@ -948,7 +955,7 @@
 				<max_split>1000</max_split>
 			</group>
 			<group>
-				<ingrade>Examen final</ingrade>
+				<ingrade>Nota de prácticas</ingrade>
 				<cod_split>Entre 0 y 5</cod_split>
 				<min_split>0</min_split>
 				<max_split>5</max_split>
@@ -972,6 +979,174 @@
 				<max_split>1000</max_split>
 			</group>
 
+		</groups>
+	</curso>
+	<curso>
+		<id>20-82376</id>
+		<anoaca>2020/21</anoaca>
+		<author>Pilar Álvarez vázquez</author>
+		<title>Biología Celular e Histología</title>
+		<degree>XXXX</degree>
+		<college>148</college>
+		<url>2582</url>
+		<logfile>../Data/20-82376 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/20-82376 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/20-82376 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2020-09-21</fecini>
+		<fecfin>2021-02-05</fecfin>
+		<grades>
+			<main_grade>
+				<name>NOTA ACTAS FEBRERO</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>NOTA FINAL DE TEORÍA (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>EXAMEN FINAL ENERO (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>NOTA DE EVALUACIÓN CONTINUA (Real)</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2020-01-13</parcial>
+		</parciales>
+		<pruebas>
+		</pruebas>
+		<autoevaluaciones>
+			<autoevaluacion>2020-11-15</autoevaluacion>
+			<autoevaluacion>2020-11-19</autoevaluacion>
+			<autoevaluacion>2020-11-26</autoevaluacion>
+			<autoevaluacion>2020-12-18</autoevaluacion>
+			<autoevaluacion>2020-12-22</autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+			<foro>2021-01-08</foro>
+		</foros>
+		<tareas>
+			<tarea>2020-09-28</tarea>
+			<tarea>2020-10-15</tarea>
+			<tarea>2020-10-02</tarea>
+			<tarea>2020-11-04</tarea>
+			<tarea>2020-10-29</tarea>
+			<tarea>2020-10-31</tarea>
+			<tarea>2020-11-10</tarea>
+			<tarea>2020-11-11</tarea>
+			<tarea>2020-11-12</tarea>
+			<tarea>2020-12-02</tarea>
+			<tarea>2020-12-07</tarea>
+			<tarea>2020-12-11</tarea>
+			<tarea>2020-12-21</tarea>
+			<tarea>2021-01-08</tarea>
+			<tarea>2021-01-15</tarea>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA ACTAS FEBRERO</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE TEORÍA (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE TEORÍA (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE TEORÍA (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA FINAL DE TEORÍA (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>EXAMEN FINAL ENERO (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>EXAMEN FINAL ENERO (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>EXAMEN FINAL ENERO (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>EXAMEN FINAL ENERO (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA DE EVALUACIÓN CONTINUA (Real)</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA DE EVALUACIÓN CONTINUA (Real)</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA DE EVALUACIÓN CONTINUA (Real)</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>NOTA DE EVALUACIÓN CONTINUA (Real)</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
 		</groups>
 	</curso>
 </cursos>

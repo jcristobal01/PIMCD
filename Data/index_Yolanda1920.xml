@@ -1416,5 +1416,155 @@
 			</group>
 																																
 		</groups>
-	</curso>	
+	</curso>
+	
+	<curso>
+		<id>20-651989</id>
+		<anoaca>2020/21</anoaca>
+		<author>Yolanda Fuentes Peñaranda</author>
+		<title>EVIDENCIA CIENTÍFICA EN CIENCIAS DE LA SALUD – 603083</title>
+		<degree></degree>
+		<college>245</college>
+		<url>803168</url>
+		<logfile>../Data/20-651989 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/20-651989 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/20-651989 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2020-09-21</fecini>
+		<fecfin>2021-01-25</fecfin>
+		<grades>
+			<main_grade>
+				<name>Nota Final</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name>Total_Actividades</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Total_Proyectos</name>
+				<passgrade>5</passgrade>
+			</grade>
+			<grade>
+				<name>Total Activ.</name>
+				<passgrade>5</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial>2021-01-25</parcial>
+			<parcial>2021-06-21</parcial>
+		</parciales>
+		<autoevaluaciones>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+			<tareas>2020-10-28</tareas>
+			<tareas>2020-12-02</tareas>
+			<tareas>2021-01-20</tareas>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Nota Final</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Nota Final</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Nota Final</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Nota Final</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Actividades</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Total_Proyectos</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Total Activ.</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Total Activ.</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.95</max_split>
+			</group>
+			<group>
+				<ingrade>Total Activ.</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.55</max_split>
+			</group>
+			<group>
+				<ingrade>Total Activ.</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>	
+			</group>
+		</groups>
+	</curso>			
 </cursos>

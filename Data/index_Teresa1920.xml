@@ -439,6 +439,10 @@
 				<name>Examen Teórico</name>
 				<passgrade>5</passgrade>
 			</grade>
+			<grade>
+				<name>Final-CuestiCampus</name>
+				<passgrade>5</passgrade>
+			</grade>
 		</grades>
 		<parciales>
 			<parcial>2020-01-15</parcial>
@@ -546,6 +550,30 @@
 			</group>
 			<group>
 				<ingrade>Examen Teórico</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+			<group>
+				<ingrade>Final-CuestiCampus</ingrade>
+				<cod_split>Entre 0 y 5</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Final-CuestiCampus</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Final-CuestiCampus</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Final-CuestiCampus</ingrade>
 				<cod_split>Más de 8,54</cod_split>
 				<min_split>8.55</min_split>
 				<max_split>1000</max_split>
@@ -879,7 +907,7 @@
 				<max_split>8.54</max_split>
 			</group>
 			<group>
-				<ingrade>Cuestionario:EXAMEN BIOMECÁNICA COLUMNA VERTEBRAL (Real))</ingrade>
+				<ingrade>Cuestionario:EXAMEN BIOMECÁNICA COLUMNA VERTEBRAL (Real)</ingrade>
 				<cod_split>Más de 8,54</cod_split>
 				<min_split>8.55</min_split>
 				<max_split>1000</max_split>
@@ -897,7 +925,7 @@
 				<max_split>6.94</max_split>
 			</group>
 			<group>
-				<ingrade>Cuestionario:BIOMECÁNICA EXTREMIDAD INFERIOR (Real))</ingrade>
+				<ingrade>Cuestionario:BIOMECÁNICA EXTREMIDAD INFERIOR (Real)</ingrade>
 				<cod_split>Entre 6,95 y 8,54</cod_split>
 				<min_split>6.95</min_split>
 				<max_split>8.54</max_split>
@@ -915,7 +943,7 @@
 				<max_split>5</max_split>
 			</group>
 			<group>
-				<ingrade>Cuestionario:Examen BIOMECÁNICA TEJIDOS DEL APARATO LOCOMOTOR (Real))</ingrade>
+				<ingrade>Cuestionario:Examen BIOMECÁNICA TEJIDOS DEL APARATO LOCOMOTOR (Real)</ingrade>
 				<cod_split>Entre 5 y 6,94</cod_split>
 				<min_split>5</min_split>
 				<max_split>6.94</max_split>
@@ -1130,7 +1158,7 @@
 		<id>20-171904</id>
 		<anoaca>2020/21</anoaca>
 		<author>Teresa Angulo</author>
-		<title>Biomeácnica</title>
+		<title>Biomecánica</title>
 		<degree>0844</degree>
 		<college>126</college>
 		<url></url>

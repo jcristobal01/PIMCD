@@ -403,4 +403,73 @@
 			</group>
 		</groups>
 	</curso>
+	<curso>
+		<id>20-473738</id>
+		<anoaca>2020/21</anoaca>
+		<author>Ana Álvarez</author>
+		<title>SALUD LABORAL</title>
+		<degree>0844</degree>
+		<college>244</college>
+		<url></url>
+		<logfile>../Data/20-473738 Registros.csv</logfile>
+		<logvers>2.9.I</logvers>
+		<studentsfile>../Data/20-473738 Alumnos.csv</studentsfile>
+		<gradesfile>../Data/20-473738 Calificaciones.csv</gradesfile>
+		<resourcesfile></resourcesfile>
+		<fecini>2020-09-20</fecini>
+		<fecfin>2021-02-02</fecfin>
+		<grades>
+			<main_grade>
+				<name>Febrero</name>
+				<passgrade>5</passgrade>
+			</main_grade>
+			<main_grade2>
+				<name></name>
+				<passgrade></passgrade>
+			</main_grade2>
+			<grade>
+				<name></name>
+				<passgrade>2021-02-01</passgrade>
+			</grade>
+		</grades>
+		<parciales>
+			<parcial></parcial>
+		</parciales>
+		<autoevaluaciones>
+			<autoevaluacion>2020-10-28</autoevaluacion>
+			<autoevaluacion>2020-11-20</autoevaluacion>
+			<autoevaluacion>2020-12-22</autoevaluacion>
+			<autoevaluacion>2021-01-18</autoevaluacion>
+		</autoevaluaciones>
+		<foros>
+		</foros>
+		<tareas>
+		</tareas>
+		<groups>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Entre 0 y 4,99</cod_split>
+				<min_split>0</min_split>
+				<max_split>5</max_split>
+			</group>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Entre 5 y 6,94</cod_split>
+				<min_split>5</min_split>
+				<max_split>6.94</max_split>
+			</group>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Entre 6,95 y 8,54</cod_split>
+				<min_split>6.95</min_split>
+				<max_split>8.54</max_split>
+			</group>
+			<group>
+				<ingrade>Febrero</ingrade>
+				<cod_split>Más de 8,54</cod_split>
+				<min_split>8.55</min_split>
+				<max_split>1000</max_split>
+			</group>
+		</groups>
+	</curso>
 </cursos>
